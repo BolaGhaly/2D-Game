@@ -19,13 +19,22 @@ public class GamePanel extends JPanel implements Runnable{
 	final int screenWidth = tileSize * maxScreenColumn; //760 pixels
 	final int screenHeight = tileSize * maxScreenRow; //576 pixels
 	
+	
+	UserControls userKey = new UserControls();
 	Thread gameThread;
+	
+	int userXCoord = 100;
+	int userYCoord = 100;
+	int userSpeed = 4;
+	
 	
 	public GamePanel () {
 		
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
+		this.addKeyListener(userKey);
+		this.setFocusable(true);
 	}
 
 	public void startGameThread() {
@@ -38,16 +47,44 @@ public class GamePanel extends JPanel implements Runnable{
 		// TODO Auto-generated method stub
 		
 		while(gameThread!=null) {
-			System.out.println("Game thread is running");
+			
+			long currentTime = System.nanoTime();
+			//System.out.println("current time:" + currentTime);
+			
+			//System.out.println("Game thread is running");
+		
+			update();
+		
+			repaint(); 
+		
 		}
-		
-		update();
-		
-		repaint(); 
 	}
 	
 	public void update() {
 		
+		if(userKey.moveUp == true) {
+		
+				userYCoord-=userSpeed;
+			
+		}
+		
+		else if(userKey.moveDown == true) {
+			
+				userYCoord+=userSpeed;
+			
+		}
+		
+		else if(userKey.moveLeft==true) {
+		
+				userXCoord-=userSpeed;
+			
+		}
+		
+		else if(userKey.moveRight == true) {
+			
+				userXCoord+=userSpeed;
+			
+		}
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -58,7 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		g2.setColor(Color.white);
 		
-		g2.fillRect(100, 100, tileSize, tileSize);
+		g2.fillRect(userXCoord, userYCoord, tileSize, tileSize);
 		
 		g2.dispose();
 	}
