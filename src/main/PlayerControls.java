@@ -3,7 +3,7 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class UserControls implements KeyListener {
+public class PlayerControls implements KeyListener {
 	
 	public boolean moveUp, moveDown, moveLeft, moveRight;
 
