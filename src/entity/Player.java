@@ -48,33 +48,50 @@ public class Player extends Entity{
 	
 	public void update() {
 		
-		if(playerKey.moveUp == true) {
+		if(playerKey.moveDown ==true || playerKey.moveUp ==true 
+				|| playerKey.moveRight == true || playerKey.moveLeft == true) {
 			
-			direction = "up";
-			y-=speed;
+			if(playerKey.moveUp == true) {
+			
+				direction = "up";
+				y-=speed;
 		
-		}
+			}
+		
+			else if(playerKey.moveDown == true) {
+		
+				direction = "down";
+				y+=speed;
+		
+			}
 	
-		else if(playerKey.moveDown == true) {
-		
-			direction = "down";
-			y+=speed;
-		
-		}
+			else if(playerKey.moveLeft==true) {
 	
-		else if(playerKey.moveLeft==true) {
+				direction = "left";
+				x-=speed;
+		
+			}
 	
-			direction = "left";
-			x-=speed;
+			else if(playerKey.moveRight == true) {
 		
+				direction = "right";
+				x+=speed;
+			
+			}
+		
+			spriteCounter++;
+			if(spriteCounter>10) {
+				if(spriteNum==1) {
+					spriteNum=2;
+				}
+				else if(spriteNum==2) {
+					spriteNum=1;
+				}
+				spriteCounter=0;
+			}
 		}
-	
-		else if(playerKey.moveRight == true) {
 		
-			direction = "right";
-			x+=speed;
-		
-		}
+
 		
 	}
 	
@@ -88,16 +105,36 @@ public class Player extends Entity{
 		
 		switch(direction) {
 		case "up":
-			playerSprite = up1;
+			if(spriteNum==1) {
+				playerSprite = up1;
+				}
+			if(spriteNum==2) {
+				playerSprite = up2;
+			}
 			break;
 		case "down":
-			playerSprite = down1;
+			if(spriteNum==1) {
+				playerSprite = down1;
+				}
+			if(spriteNum==2) {
+				playerSprite = down2;
+			}
 			break;
 		case "left":
-			playerSprite = left1;
+			if(spriteNum==1) {
+				playerSprite = left1;
+				}
+			if(spriteNum==2) {
+				playerSprite = left2;
+			}
 			break;
 		case "right":
-			playerSprite = right1;
+			if(spriteNum==1) {
+				playerSprite = right1;
+				}
+			if(spriteNum==2) {
+				playerSprite = right2;
+			}
 			break;
 		}
 		
