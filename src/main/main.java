@@ -1,26 +1,37 @@
 package main;
 
-import javax.swing.JFrame;
+//import java.awt.event.ActionEvent;
+
+//import javax.swing.*;
 
 public class main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
 		
-		JFrame window = new JFrame();
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setResizable(false);
-		window.setTitle("2D RPG");
 		
+		
+//		JFrame window = new JFrame();
+//		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		window.setResizable(false);
+//		window.setTitle("2D RPG");
+//		
 		GamePanel gamePanel = new GamePanel();
-		window.add(gamePanel);
+		gamePanel.setVisible(false);
 		
-		window.pack();
-		
-		window.setLocationRelativeTo(null);
-		window.setVisible(true);
+//		window.add(gamePanel);
+//		
+//		window.pack();
+//		
+//		window.setLocationRelativeTo(null);
+//		window.setVisible(true);
+//		
 
-		gamePanel.startGameThread();
-	}
+		//characterSelector.addActionListener(this);
+		 new characterSelect(gamePanel);
+		
+		
+		
+	} 
 
 }
