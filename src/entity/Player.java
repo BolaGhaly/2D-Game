@@ -29,52 +29,72 @@ public class Player extends Entity{
 	}
 	
 	public void getPlayerImage() {
+		//System.out.println(gp.character);
 		
-		try {
+		if(this.gp.character=="Batman") {
+			try {
 			
-			up1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_1.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_2.png"));
+				up1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_1.png"));
+				up2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_2.png"));
+				down1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_1.png"));
+				down2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_2.png"));
+				left1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_1.png"));
+				left2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_2.png"));
+				right1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_1.png"));
+				right2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_2.png"));
 
-		}catch(IOException e) {
-			e.printStackTrace();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void update() {
 		
-		if(playerKey.moveUp == true) {
+		if(playerKey.moveDown ==true || playerKey.moveUp ==true 
+				|| playerKey.moveRight == true || playerKey.moveLeft == true) {
 			
-			direction = "up";
-			y-=speed;
+			if(playerKey.moveUp == true) {
+			
+				direction = "up";
+				y-=speed;
 		
-		}
+			}
+		
+			else if(playerKey.moveDown == true) {
+		
+				direction = "down";
+				y+=speed;
+		
+			}
 	
-		else if(playerKey.moveDown == true) {
-		
-			direction = "down";
-			y+=speed;
-		
-		}
+			else if(playerKey.moveLeft==true) {
 	
-		else if(playerKey.moveLeft==true) {
+				direction = "left";
+				x-=speed;
+		
+			}
 	
-			direction = "left";
-			x-=speed;
+			else if(playerKey.moveRight == true) {
 		
+				direction = "right";
+				x+=speed;
+			
+			}
+		
+			spriteCounter++;
+			if(spriteCounter>10) {
+				if(spriteNum==1) {
+					spriteNum=2;
+				}
+				else if(spriteNum==2) {
+					spriteNum=1;
+				}
+				spriteCounter=0;
+			}
 		}
-	
-		else if(playerKey.moveRight == true) {
 		
-			direction = "right";
-			x+=speed;
-		
-		}
+
 		
 	}
 	
@@ -88,16 +108,36 @@ public class Player extends Entity{
 		
 		switch(direction) {
 		case "up":
-			playerSprite = up1;
+			if(spriteNum==1) {
+				playerSprite = up1;
+				}
+			if(spriteNum==2) {
+				playerSprite = up2;
+			}
 			break;
 		case "down":
-			playerSprite = down1;
+			if(spriteNum==1) {
+				playerSprite = down1;
+				}
+			if(spriteNum==2) {
+				playerSprite = down2;
+			}
 			break;
 		case "left":
-			playerSprite = left1;
+			if(spriteNum==1) {
+				playerSprite = left1;
+				}
+			if(spriteNum==2) {
+				playerSprite = left2;
+			}
 			break;
 		case "right":
-			playerSprite = right1;
+			if(spriteNum==1) {
+				playerSprite = right1;
+				}
+			if(spriteNum==2) {
+				playerSprite = right2;
+			}
 			break;
 		}
 		
