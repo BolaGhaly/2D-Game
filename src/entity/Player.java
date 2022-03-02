@@ -18,6 +18,8 @@ public class Player extends Entity{
 		this.gp=gp;
 		this.playerKey=playerKey;
 		setDefaultValues();
+		
+		System.out.println("Hello" + gp.character);
 		getPlayerImage();
 	}
 	
@@ -29,7 +31,9 @@ public class Player extends Entity{
 	}
 	
 	public void getPlayerImage() {
+		//System.out.println(gp.character);
 		
+		if(this.gp.character=="Batman") {
 		try {
 			
 			up1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_1.png"));
@@ -43,6 +47,7 @@ public class Player extends Entity{
 
 		}catch(IOException e) {
 			e.printStackTrace();
+		}
 		}
 	}
 	

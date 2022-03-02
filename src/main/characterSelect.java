@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;  
+import main.GamePanel;
 
 public class characterSelect extends Frame implements ActionListener{  
 	
@@ -17,13 +18,15 @@ public class characterSelect extends Frame implements ActionListener{
     
     
     
-    characterSelect(GamePanel gP){  
+    characterSelect(){  
     	//ImageIcon batman = new ImageIcon("/player/batman/batman_down_1.png"); // load the image to a imageIcon
     	//Image image = batman.getImage(); // transform it 
     	//Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
     	//batman = new ImageIcon(newimg);  // transform it back
     	//Icon batman= new ImageIcon("/player/batman/batman_down_1.png");
-    	gamePanel=gP;  
+//    	GamePanel gp = new GamePanel("");
+//    	gamePanel=gp;
+    	  
         l=new JLabel("Batman");  
         l.setBounds(50,100, 250,20);      
         try {
@@ -58,7 +61,9 @@ public class characterSelect extends Frame implements ActionListener{
     
     
     public static void main(String[] args) { 
-    	new characterSelect(gamePanel); 
+    	//GamePanel gamePanel = new GamePanel(" ");
+//		gamePanel.setVisible(false);
+    	new characterSelect(); 
     }
 
 	@Override
@@ -70,7 +75,8 @@ public class characterSelect extends Frame implements ActionListener{
 		window.setResizable(false);
 		window.setTitle("2D RPG");
 		
-		GamePanel gamePanel = new GamePanel();
+		GamePanel gamePanel = new GamePanel("Batman");
+		//System.out.println(gamePanel.character);
 		window.add(gamePanel);
 		
 		window.pack();

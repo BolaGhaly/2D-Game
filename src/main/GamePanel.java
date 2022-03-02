@@ -16,6 +16,7 @@ public class GamePanel extends JPanel implements Runnable{
 	//screen settings
 	final int originalTileSize = 16; //16x16 tile 
 	final int scale = 3;
+	public String character = "";
 	
 	public final int tileSize = originalTileSize * scale; //48x48 tile
 	final int maxScreenColumn = 16;
@@ -27,20 +28,23 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	PlayerControls playerKey = new PlayerControls();
 	Thread gameThread;
-	Player player = new Player(this, playerKey);
+	Player player; 
 	
 	int playerXCoord = 100;
 	int playerYCoord = 100;
 	int playerSpeed = 4;
 	
 	
-	public GamePanel () {
+	public GamePanel (String character) {
 		
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setBackground(Color.blue);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(playerKey);
 		this.setFocusable(true);
+		this.character=character;
+		this.player = new Player(this, playerKey);
+		System.out.println(this.character);
 	}
 
 	public void startGameThread() {
@@ -109,5 +113,6 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		g2.dispose();
 	}
+	
 	 
 }

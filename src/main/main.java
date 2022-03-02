@@ -16,8 +16,8 @@ public class main {
 //		window.setResizable(false);
 //		window.setTitle("2D RPG");
 //		
-		GamePanel gamePanel = new GamePanel();
-		gamePanel.setVisible(false);
+//		GamePanel gamePanel = new GamePanel(" ");
+//		gamePanel.setVisible(false);
 		
 //		window.add(gamePanel);
 //		
@@ -28,7 +28,7 @@ public class main {
 //		
 
 		//characterSelector.addActionListener(this);
-		 new characterSelect(gamePanel);
+		// new characterSelect(gamePanel);
 		
 		
 		
