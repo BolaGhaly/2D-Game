@@ -11,8 +11,8 @@ import main.GamePanel;
 
 public class characterSelect extends Frame implements ActionListener{  
 	
-    JLabel l; JButton b; 
-    public BufferedImage batman;
+    JLabel l; JButton batman_button, robin_button;  
+    public BufferedImage batman,robin,nightwing;
     public static GamePanel gamePanel;
 
     
@@ -27,10 +27,12 @@ public class characterSelect extends Frame implements ActionListener{
 //    	GamePanel gp = new GamePanel("");
 //    	gamePanel=gp;
     	  
-        l=new JLabel("Batman");  
-        l.setBounds(50,100, 250,20);      
+//        l=new JLabel("Batman");  
+//        l.setBounds(50,100, 250,20);      
+    	
         try {
-        batman = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_character_select.png"));
+        batman = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_character_select_128.png"));
+        robin = ImageIO.read(getClass().getResourceAsStream("/player/robin/robin_character_select_128.png"));
         }catch(IOException e){
         	e.printStackTrace();
         }
@@ -38,12 +40,77 @@ public class characterSelect extends Frame implements ActionListener{
       
         
        
-        b = new JButton(new ImageIcon(batman));
-        b.setBorder(BorderFactory.createEmptyBorder());
-        b.setContentAreaFilled(false);
-        b.setBounds(30,150,200,200);  
-        b.addActionListener(this);    
-        add(b);add(l);    
+        batman_button = new JButton(new AbstractAction("Batman") {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		// TODO Auto-generated method stub
+
+        		JFrame window = new JFrame();
+        		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        		window.setResizable(false);
+        		window.setTitle("2D RPG");
+        		
+        		GamePanel gamePanel = new GamePanel("Batman");
+        		window.add(gamePanel);
+        		
+        		window.pack();
+        		
+        		window.setLocationRelativeTo(null);
+        		window.setVisible(true);
+        		
+        		setVisible(false);
+        		
+        		gamePanel.startGameThread();
+        		
+        	} 
+        	
+        });
+        
+        batman_button.setBorder(BorderFactory.createEmptyBorder());
+        batman_button.setContentAreaFilled(false);
+        batman_button.setBounds(0,0,200,200);  
+        batman_button.addActionListener(this); 
+        batman_button.setIcon(new ImageIcon(batman));
+                
+        add(batman_button);
+        
+        
+        
+        robin_button = new JButton(new AbstractAction("Robin") {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		// TODO Auto-generated method stub
+
+        		JFrame window = new JFrame();
+        		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        		window.setResizable(false);
+        		window.setTitle("2D RPG");
+        		
+        		GamePanel gamePanel = new GamePanel("Robin");
+        		window.add(gamePanel);
+        		
+        		window.pack();
+        		
+        		window.setLocationRelativeTo(null);
+        		window.setVisible(true);
+        		
+        		setVisible(false);
+        		
+        		gamePanel.startGameThread();
+        		
+        	} 
+        	
+        });
+        
+        robin_button.setBorder(BorderFactory.createEmptyBorder());
+        robin_button.setContentAreaFilled(false);
+        robin_button.setBounds(300,0,200,200);  
+        robin_button.addActionListener(this); 
+        robin_button.setIcon(new ImageIcon(robin));
+                
+        add(robin_button);
+        
+         
         setSize(600,600);  
         setLayout(null);  
         setVisible(true);  
@@ -62,22 +129,22 @@ public class characterSelect extends Frame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-		JFrame window = new JFrame();
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setResizable(false);
-		window.setTitle("2D RPG");
-		
-		GamePanel gamePanel = new GamePanel("Batman");
-		window.add(gamePanel);
-		
-		window.pack();
-		
-		window.setLocationRelativeTo(null);
-		window.setVisible(true);
-		
-		this.setVisible(false);
-		
-		gamePanel.startGameThread();
+//		JFrame window = new JFrame();
+//		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		window.setResizable(false);
+//		window.setTitle("2D RPG");
+//		
+//		GamePanel gamePanel = new GamePanel("Batman");
+//		window.add(gamePanel);
+//		
+//		window.pack();
+//		
+//		window.setLocationRelativeTo(null);
+//		window.setVisible(true);
+//		
+//		this.setVisible(false);
+//		
+//		gamePanel.startGameThread();
 		
 	} 
     
