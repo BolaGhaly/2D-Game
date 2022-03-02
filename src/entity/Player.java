@@ -3,6 +3,7 @@ package entity;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -34,20 +35,53 @@ public class Player extends Entity{
 		if(this.gp.character=="Batman") {
 			try {
 			
-				up1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_1.png"));
-				up2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_2.png"));
-				down1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_1.png"));
-				down2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_2.png"));
-				left1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_1.png"));
-				left2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_2.png"));
-				right1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_1.png"));
-				right2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_2.png"));
+				spriteSheet= ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_sprite_sheet.png"));
+				up1 = this.getSprite(1, 4, 48, 48);
+				up2 = this.getSprite(3, 4, 48, 48);
+				down1 = this.getSprite(1, 1, 48, 48);
+				down2 = this.getSprite(3, 1, 48, 48);
+				left1 = this.getSprite(1, 2, 48, 48);
+				left2 = this.getSprite(3, 2, 48, 48);
+				right1 = this.getSprite(1, 3, 48, 48);
+				right2 = this.getSprite(3, 3, 48, 48);
 
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
 		}
-	}
+		
+		if(this.gp.character=="Robin") {
+			try {
+			
+				spriteSheet= ImageIO.read(getClass().getResourceAsStream("/player/robin/robin_nightwing_sprite_sheet.png"));
+				up1 = this.getSprite(1, 4, 48, 48);
+				up2 = this.getSprite(3, 4, 48, 48);
+				down1 = this.getSprite(1, 1, 48, 48);
+				down2 = this.getSprite(3, 1, 48, 48);
+				left1 = this.getSprite(1, 2, 48, 48);
+				left2 = this.getSprite(3, 2, 48, 48);
+				right1 = this.getSprite(1, 3, 48, 48);
+				right2 = this.getSprite(3, 3, 48, 48);
+
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+//		try{
+//            BufferedImage img = this.getSprite(2, 1, 48, 48);
+//
+//            File robin_character_select = new File("robin_character_select.png");
+//            ImageIO.write(img, "PNG", robin_character_select);
+//            System.out.println("Hello");        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
+    }
+	
 	
 	public void update() {
 		
