@@ -50,33 +50,24 @@ public class characterSelect extends Frame implements ActionListener{
         this.setBackground(Color.LIGHT_GRAY);
     }  
     
-   // @Override
-//    public void actionPerformed(ActionEvent e, GamePanel gamePanel) {
-//    	
-//    	gamePanel=
-//        System.out.println("Hello");
-//    	this.gamePanel.startGameThread();
-//    	
-//    }  
-    
+ 
     
     public static void main(String[] args) { 
-    	//GamePanel gamePanel = new GamePanel(" ");
-//		gamePanel.setVisible(false);
+
     	new characterSelect(); 
+    	
     }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		//System.out.println("hello!");
+
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
 		window.setTitle("2D RPG");
 		
 		GamePanel gamePanel = new GamePanel("Batman");
-		//System.out.println(gamePanel.character);
 		window.add(gamePanel);
 		
 		window.pack();

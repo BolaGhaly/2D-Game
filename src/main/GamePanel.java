@@ -44,7 +44,6 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 		this.character=character;
 		this.player = new Player(this, playerKey);
-		System.out.println(this.character);
 	}
 
 	public void startGameThread() {

@@ -18,8 +18,6 @@ public class Player extends Entity{
 		this.gp=gp;
 		this.playerKey=playerKey;
 		setDefaultValues();
-		
-		System.out.println("Hello" + gp.character);
 		getPlayerImage();
 	}
 	
@@ -34,20 +32,20 @@ public class Player extends Entity{
 		//System.out.println(gp.character);
 		
 		if(this.gp.character=="Batman") {
-		try {
+			try {
 			
-			up1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_1.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_2.png"));
+				up1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_1.png"));
+				up2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_up_2.png"));
+				down1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_1.png"));
+				down2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_down_2.png"));
+				left1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_1.png"));
+				left2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_left_2.png"));
+				right1 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_1.png"));
+				right2 = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_right_2.png"));
 
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
