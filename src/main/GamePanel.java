@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
 
 import entity.Player;
 import main.PlayerControls;
@@ -19,11 +20,11 @@ public class GamePanel extends JPanel implements Runnable {
 	final int scale = 3;
 	public String character = "";
 
-	public final int tileSize = originalTileSize * scale; //48x48 tile
-	public final int maxScreenColumn = 22;
-	public final int maxScreenRow = 16;
-	public final int screenWidth = tileSize * maxScreenColumn; //760 pixels
-	public final int screenHeight = tileSize * maxScreenRow; //576 pixels
+	public int tileSize = originalTileSize * scale; //48x48 tile
+	public int maxScreenColumn = 22;
+	public int maxScreenRow = 16;
+	public int screenWidth = tileSize * maxScreenColumn; //760 pixels
+	public int screenHeight = tileSize * maxScreenRow; //576 pixels
 
 	// WORLD SETTINGS
 	public final int maxWorldCol = 50;
@@ -34,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
 	int FPS = 60;
 
 	TileManager tileM = new TileManager(this);
-	PlayerControls playerKey = new PlayerControls();
+	PlayerControls playerKey = new PlayerControls(this);
 	Thread gameThread;
 	public Player player;
 
@@ -51,6 +52,23 @@ public class GamePanel extends JPanel implements Runnable {
 		this.setFocusable(true);
 		this.character = character;
 		this.player = new Player(this, playerKey);
+	}
+
+	public void zoomInOut(int i) {
+
+		int oldWorldWidth = tileSize * maxWorldCol;
+		tileSize += i;
+		int newWorldWidth = tileSize * maxWorldCol;
+
+		player.speed = (double) newWorldWidth / 600;
+
+		double multiplier = (double) newWorldWidth / oldWorldWidth;
+
+		double newPlayerWorldX = player.worldX * multiplier;
+		double newPlayerWorldY = player.worldY * multiplier;
+
+		player.worldX = newPlayerWorldX;
+		player.worldY = newPlayerWorldY;
 	}
 
 	public void startGameThread() {

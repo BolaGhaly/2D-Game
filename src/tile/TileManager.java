@@ -21,7 +21,7 @@ public class TileManager {
 		tile = new Tile[10];
 		mapTileNum = new int[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
 		getTileImage();
-		loadMap("/worldMap01/worldMap01.txt");
+		loadMap("/worldMap1/worldMap1.txt");
 	}
 
 	public void getTileImage() {
@@ -98,14 +98,15 @@ public class TileManager {
 			int tileNum = mapTileNum[worldCol][worldRow];
 			int worldX = worldCol * gamePanel.tileSize;
 			int worldY = worldRow * gamePanel.tileSize;
-			int screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
-			int screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
+			double screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
+			double screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
 
 			if (worldX + gamePanel.tileSize > gamePanel.player.worldX - gamePanel.player.screenX
 					&& worldX - gamePanel.tileSize < gamePanel.player.worldX + gamePanel.player.screenX
 					&& worldY + gamePanel.tileSize > gamePanel.player.worldY - gamePanel.player.screenY
 					&& worldY - gamePanel.tileSize < gamePanel.player.worldY + gamePanel.player.screenY) {
-				g2.drawImage(tile[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+				g2.drawImage(tile[tileNum].image, (int) screenX, (int) screenY, gamePanel.tileSize, gamePanel.tileSize,
+						null);
 			}
 
 			worldCol++;
