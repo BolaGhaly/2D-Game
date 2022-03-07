@@ -48,6 +48,7 @@ public class CollisionChecker {
 			tileNum2 = gamePanel.tileM.mapTileNum[entityRightCol][entityBottomRow];
 			if (gamePanel.tileM.tile[tileNum1].collision == true || gamePanel.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
+				break;
 			}
 			break;
 		}
