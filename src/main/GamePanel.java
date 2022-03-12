@@ -66,12 +66,12 @@ public class GamePanel extends JPanel implements Runnable {
 		tileSize += i;
 		int newWorldWidth = tileSize * maxWorldCol;
 
-		player.speed = (double) newWorldWidth / 600;
+		player.speed =newWorldWidth / 600;
 
-		double multiplier = (double) newWorldWidth / oldWorldWidth;
+		int multiplier = newWorldWidth / oldWorldWidth;
 
-		double newPlayerWorldX = player.worldX * multiplier;
-		double newPlayerWorldY = player.worldY * multiplier;
+		int newPlayerWorldX = player.worldX * multiplier;
+		int newPlayerWorldY = player.worldY * multiplier;
 
 		player.worldX = newPlayerWorldX;
 		player.worldY = newPlayerWorldY;

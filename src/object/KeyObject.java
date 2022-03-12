@@ -16,6 +16,8 @@ public class KeyObject extends ParentObject {
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		
+		collision=true;
 			
 	}
 	
