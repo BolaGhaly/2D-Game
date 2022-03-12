@@ -11,6 +11,7 @@ import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
 
 import entity.Player;
 import main.PlayerControls;
+import object.ParentObject;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -43,6 +44,10 @@ public class GamePanel extends JPanel implements Runnable {
 	int playerXCoord = 100;
 	int playerYCoord = 100;
 	int playerSpeed = 4;
+	
+	public ParentObject[] objects = new ParentObject[5];
+	
+	public AssetSetter aSetter = new AssetSetter(this);
 
 	public GamePanel(String character) {
 
@@ -72,6 +77,10 @@ public class GamePanel extends JPanel implements Runnable {
 		player.worldY = newPlayerWorldY;
 	}
 
+	public void setupGame() {
+		
+		aSetter.setObject();
+	}
 	public void startGameThread() {
 
 		gameThread = new Thread(this);
@@ -131,10 +140,20 @@ public class GamePanel extends JPanel implements Runnable {
 
 		Graphics2D g2 = (Graphics2D) g;
 
+		
+		//draw tiles
 		tileM.draw(g2);
-
+		
+		//draw player(s)
 		player.draw(g2);
-
+		
+		//draw objects
+		for(int i=0;i<objects.length;i++) {
+			if(objects[i]!=null) {
+				objects[i].draw(g2, this);
+			}
+		}
+		
 		g2.dispose();
 	}
 

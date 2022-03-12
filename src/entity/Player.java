@@ -21,6 +21,8 @@ public class Player extends Entity {
 
 	public Player(GamePanel gp, PlayerControls playerKey) {
 
+		super(gp);
+		
 		this.gp = gp;
 		this.playerKey = playerKey;
 
@@ -65,8 +67,7 @@ public class Player extends Entity {
 		if (this.gp.character == "Robin") {
 			try {
 
-				spriteSheet = ImageIO
-						.read(getClass().getResourceAsStream("/player/robin/robin_nightwing_sprite_sheet.png"));
+				spriteSheet = ImageIO.read(getClass().getResourceAsStream("/player/robin/robin_nightwing_sprite_sheet.png"));
 				up1 = this.getSprite(1, 4, 48, 48);
 				up2 = this.getSprite(3, 4, 48, 48);
 				down1 = this.getSprite(1, 1, 48, 48);
@@ -80,16 +81,41 @@ public class Player extends Entity {
 				e.printStackTrace();
 			}
 		}
+		
+		if (this.gp.character == "Signal") {
+			try {
 
-		//		try{
-		//            BufferedImage img = this.getSprite(2, 1, 48, 48);
-		//
-		//            File robin_character_select = new File("robin_character_select.png");
-		//            ImageIO.write(img, "PNG", robin_character_select);
-		//            System.out.println("Hello");        }
-		//        catch(Exception e){
-		//            e.printStackTrace();
-		//        }
+				spriteSheet = ImageIO.read(getClass().getResourceAsStream("/player/signal/signal_sprite_sheet.png"));
+				up1 = this.getSprite(2, 3, 48, 48);
+				up2 = this.getSprite(3, 3, 48, 48);
+				down1 = this.getSprite(1, 1, 48, 48);
+				down2 = this.getSprite(2, 1, 48, 48);
+				left1 = this.getSprite(1, 2, 48, 48);
+				left2 = this.getSprite(2, 2, 48, 48);
+				right1 = this.getSprite(3, 2, 48, 48);
+				right2 = this.getSprite(1, 3, 48, 48);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+
+		
+		//function for slicing and saving individual sprite from sheet
+		
+//				try{
+//		            BufferedImage img = this.getSprite(3, 1, 48, 48);
+//		
+//		            File signal = new File("signal_character_select.png");
+//		            ImageIO.write(img, "PNG", signal);
+//		            System.out.println("Hello");        }
+//		        catch(Exception e){
+//		            e.printStackTrace();
+//		        }
+		
+		
+		
 	}
 
 	public void update() {
