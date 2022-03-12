@@ -1,0 +1,23 @@
+package object;
+
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+public class KeyObject extends ParentObject {
+
+	
+	public KeyObject() {
+		objectName = "Key";
+		
+		try {
+			objectSprite = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+			
+	}
+	
+	
+}

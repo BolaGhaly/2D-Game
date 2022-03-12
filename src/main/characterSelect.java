@@ -12,8 +12,8 @@ import main.GamePanel;
 public class characterSelect extends Frame implements ActionListener {
 
 	JLabel l;
-	JButton batman_button, robin_button;
-	public BufferedImage batman, robin, nightwing;
+	JButton batman_button, robin_button, signal_button;
+	public BufferedImage batman, robin, signal;
 	public static GamePanel gamePanel;
 
 	characterSelect() {
@@ -31,6 +31,7 @@ public class characterSelect extends Frame implements ActionListener {
 		try {
 			batman = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_character_select_128.png"));
 			robin = ImageIO.read(getClass().getResourceAsStream("/player/robin/robin_character_select_128.png"));
+			signal = ImageIO.read(getClass().getResourceAsStream("/player/signal/signal_character_select_128.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -55,6 +56,7 @@ public class characterSelect extends Frame implements ActionListener {
 
 				setVisible(false);
 
+				gamePanel.setupGame();
 				gamePanel.startGameThread();
 
 			}
@@ -89,6 +91,7 @@ public class characterSelect extends Frame implements ActionListener {
 
 				setVisible(false);
 
+				gamePanel.setupGame();
 				gamePanel.startGameThread();
 
 			}
@@ -102,6 +105,43 @@ public class characterSelect extends Frame implements ActionListener {
 		robin_button.setIcon(new ImageIcon(robin));
 
 		add(robin_button);
+		
+		
+		
+		signal_button = new JButton(new AbstractAction("Signal") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				JFrame window = new JFrame();
+				window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				window.setResizable(false);
+				window.setTitle("2D RPG");
+
+				GamePanel gamePanel = new GamePanel("Signal");
+				window.add(gamePanel);
+
+				window.pack();
+
+				window.setLocationRelativeTo(null);
+				window.setVisible(true);
+
+				setVisible(false);
+				
+				gamePanel.setupGame();
+				gamePanel.startGameThread();
+
+			}
+
+		});
+
+		signal_button.setBorder(BorderFactory.createEmptyBorder());
+		signal_button.setContentAreaFilled(false);
+		signal_button.setBounds(0, 200, 200, 200);
+		signal_button.addActionListener(this);
+		signal_button.setIcon(new ImageIcon(signal));
+
+		add(signal_button);
 
 		setSize(600, 600);
 		setLayout(null);
