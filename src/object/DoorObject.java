@@ -16,6 +16,8 @@ public class DoorObject extends ParentObject{
 			e.printStackTrace();
 		}
 			
+		collision=true;
+		
 	}
 
 }
