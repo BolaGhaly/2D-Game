@@ -11,7 +11,7 @@ public class KeyObject extends ParentObject {
 		objectName = "Key";
 		
 		try {
-			objectSprite = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
+			objectSprite = ImageIO.read(getClass().getResourceAsStream("/objects/batarang.png"));
 		}
 		catch(IOException e){
 			e.printStackTrace();
