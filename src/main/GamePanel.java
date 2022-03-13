@@ -21,13 +21,14 @@ public class GamePanel extends JPanel implements Runnable {
 	final int scale = 3;
 	public String character = "";
 
+	// map
 	public int tileSize = originalTileSize * scale; //48x48 tile
 	public int maxScreenColumn = 22;
 	public int maxScreenRow = 16;
 	public int screenWidth = tileSize * maxScreenColumn; //760 pixels
 	public int screenHeight = tileSize * maxScreenRow; //576 pixels
 
-	// WORLD SETTINGS
+	// world settings
 	public final int maxWorldCol = 50;
 	public final int maxWorldRow = 50;
 	public final int worldWidth = tileSize * maxWorldCol;
@@ -37,16 +38,17 @@ public class GamePanel extends JPanel implements Runnable {
 
 	TileManager tileM = new TileManager(this);
 	PlayerControls playerKey = new PlayerControls(this);
-	Thread gameThread;
 	public CollisionChecker collisionChecker = new CollisionChecker(this);
 	public Player player;
+	Sound sound = new Sound();
+	Thread gameThread;
 
 	int playerXCoord = 100;
 	int playerYCoord = 100;
 	int playerSpeed = 4;
-	
+
 	public ParentObject[] objects = new ParentObject[5];
-	
+
 	public AssetSetter aSetter = new AssetSetter(this);
 
 	public GamePanel(String character) {
@@ -66,7 +68,7 @@ public class GamePanel extends JPanel implements Runnable {
 		tileSize += i;
 		int newWorldWidth = tileSize * maxWorldCol;
 
-		player.speed =newWorldWidth / 600;
+		player.speed = newWorldWidth / 600;
 
 		int multiplier = newWorldWidth / oldWorldWidth;
 
@@ -78,9 +80,12 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void setupGame() {
-		
 		aSetter.setObject();
+
+		// plays the sound of index 0
+		playSoundLoop(0);
 	}
+
 	public void startGameThread() {
 
 		gameThread = new Thread(this);
@@ -140,21 +145,35 @@ public class GamePanel extends JPanel implements Runnable {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		
 		//draw tiles
 		tileM.draw(g2);
-		
+
 		//draw player(s)
 		player.draw(g2);
-		
+
 		//draw objects
-		for(int i=0;i<objects.length;i++) {
-			if(objects[i]!=null) {
+		for (int i = 0; i < objects.length; i++) {
+			if (objects[i] != null) {
 				objects[i].draw(g2, this);
 			}
 		}
-		
+
 		g2.dispose();
 	}
 
+	public void playSoundLoop(int i) {
+		sound.setFile(i);
+		sound.play();
+		sound.loop();
+	}
+
+	public void stopSound(int i) {
+		sound.stop();
+	}
+
+	public void playSoundOnce(int i) {
+		sound.setFile(i);
+		sound.play();
+
+	}
 }

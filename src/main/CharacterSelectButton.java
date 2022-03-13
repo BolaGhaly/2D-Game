@@ -13,13 +13,14 @@ import javax.swing.JFrame;
 public class CharacterSelectButton {
 
 	//String charcterName;
-	
+
 	public CharacterSelectButton() {
-		
+
 	}
-	
-	public JButton createButton(CharacterSelect cSelectWindow, String characterName, BufferedImage characterSprite, int topLeftX, int topLeftY, int xSize, int ySize) {
-		
+
+	public JButton createButton(CharacterSelect cSelectWindow, String characterName, BufferedImage characterSprite,
+			int topLeftX, int topLeftY, int xSize, int ySize) {
+
 		JButton button = new JButton(new AbstractAction(characterName) {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -44,16 +45,15 @@ public class CharacterSelectButton {
 				gamePanel.startGameThread();
 
 			}
-			
-			
+
 		});
-		
+
 		button.setBorder(BorderFactory.createEmptyBorder());
 		button.setContentAreaFilled(false);
 		button.setBounds(topLeftX, topLeftY, xSize, ySize);
-		
+
 		button.setIcon(new ImageIcon(characterSprite));
-		
+
 		return button;
 	}
 }

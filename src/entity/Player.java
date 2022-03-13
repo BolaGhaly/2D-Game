@@ -18,13 +18,13 @@ public class Player extends Entity {
 
 	public final int screenX;
 	public final int screenY;
-	
+
 	int numOfKeys = 0;
 
 	public Player(GamePanel gp, PlayerControls playerKey) {
 
 		super(gp);
-		
+
 		this.gp = gp;
 		this.playerKey = playerKey;
 
@@ -32,10 +32,9 @@ public class Player extends Entity {
 		screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
 		solidArea = new Rectangle(8, 16, 32, 32);
-		
-		solidAreaDefaultX=solidArea.x;
-		solidAreaDefaultY=solidArea.y;
-		
+
+		solidAreaDefaultX = solidArea.x;
+		solidAreaDefaultY = solidArea.y;
 
 		setDefaultValues();
 		getPlayerImage();
@@ -73,7 +72,8 @@ public class Player extends Entity {
 		if (this.gp.character == "Robin") {
 			try {
 
-				spriteSheet = ImageIO.read(getClass().getResourceAsStream("/player/robin/robin_nightwing_sprite_sheet.png"));
+				spriteSheet = ImageIO
+						.read(getClass().getResourceAsStream("/player/robin/robin_nightwing_sprite_sheet.png"));
 				up1 = this.getSprite(1, 4, 48, 48);
 				up2 = this.getSprite(3, 4, 48, 48);
 				down1 = this.getSprite(1, 1, 48, 48);
@@ -87,7 +87,7 @@ public class Player extends Entity {
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (this.gp.character == "Signal") {
 			try {
 
@@ -105,23 +105,19 @@ public class Player extends Entity {
 				e.printStackTrace();
 			}
 		}
-		
 
-		
 		//function for slicing and saving individual sprite from sheet
-		
-//				try{
-//		            BufferedImage img = this.getSprite(3, 1, 48, 48);
-//		
-//		            File signal = new File("signal_character_select.png");
-//		            ImageIO.write(img, "PNG", signal);
-//		            System.out.println("Hello");        }
-//		        catch(Exception e){
-//		            e.printStackTrace();
-//		        }
-		
-		
-		
+
+		//				try{
+		//		            BufferedImage img = this.getSprite(3, 1, 48, 48);
+		//		
+		//		            File signal = new File("signal_character_select.png");
+		//		            ImageIO.write(img, "PNG", signal);
+		//		            System.out.println("Hello");        }
+		//		        catch(Exception e){
+		//		            e.printStackTrace();
+		//		        }
+
 	}
 
 	public void update() {
@@ -160,11 +156,11 @@ public class Player extends Entity {
 			// check tile collision
 			collisionOn = false;
 			gp.collisionChecker.checkTile(this);
-			
+
 			//check for object collision
 			int objectIndex = gp.collisionChecker.checkObject(this, true);
 			pickUpObject(objectIndex);
-			
+
 			// If collision is false, player can move
 			if (collisionOn == false) {
 				switch (direction) {
@@ -195,25 +191,31 @@ public class Player extends Entity {
 		}
 
 	}
-	
+
 	public void pickUpObject(int index) {
-		if( index != 999) {
-			
+		if (index != 999) {
+
 			String objectName = gp.objects[index].objectName;
-			switch(objectName) {
+			switch (objectName) {
 			case "Key":
+				gp.playSoundOnce(1);
 				numOfKeys++;
-				gp.objects[index]=null;
+				gp.objects[index] = null;
 				break;
 			case "Door":
-				if(numOfKeys>0) {
-					gp.objects[index]=null;
+				if (numOfKeys > 0) {
+					gp.playSoundOnce(8);
+					gp.objects[index] = null;
 					numOfKeys--;
 				}
+				break;
+			case "Boots":
+				gp.playSoundOnce(6);
+				speed += 2;
+				gp.objects[index] = null;
+				break;
 			}
-			
-				
-			
+
 		}
 	}
 
