@@ -208,12 +208,22 @@ public class Player extends Entity {
 					gp.playSoundEffect(8);
 					gp.objects[index] = null;
 					numOfKeys--;
+					gp.ui.displayMessage("You opened the door!");
+				} else {
+					gp.ui.displayMessage("You need a key!");
+
 				}
 				break;
 			case "Boots":
 				gp.playSoundEffect(6);
 				speed += 2;
 				gp.objects[index] = null;
+				gp.ui.displayMessage("Speed Up!");
+				break;
+			case "Chest":
+				gp.ui.gameFinished = true;
+				gp.stopBackgroundMusic(0);
+				gp.playSoundEffect(3);
 				break;
 			}
 
