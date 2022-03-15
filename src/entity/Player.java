@@ -201,6 +201,7 @@ public class Player extends Entity {
 				gp.playSoundEffect(1);
 				numOfKeys++;
 				gp.objects[index] = null;
+				gp.ui.displayMessage("You got a key!");
 				break;
 			case "Door":
 				if (numOfKeys > 0) {
