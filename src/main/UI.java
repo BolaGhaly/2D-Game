@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 import object.KeyObject;
 
@@ -17,6 +18,9 @@ public class UI {
 	public String messageString = "";
 	int messageCounter = 0;
 	public boolean gameFinished = false;
+
+	double playTime;
+	DecimalFormat dFormat = new DecimalFormat("#0.00");
 
 	public UI(GamePanel gamePanel) {
 		this.gPanel = gamePanel;
@@ -37,7 +41,7 @@ public class UI {
 
 			final String END_GAME_TEXT1 = "You found the treasure!";
 			final String END_GAME_TEXT2 = "Congratulations!!";
-
+			String playersTimeString = "Your Time: " + dFormat.format(playTime);
 			// final int END_GAME_TEXT_LEN = END_GAME_TEXT.length();
 
 			// int center_x = gPanel.screenWidth / 2 - END_GAME_TEXT_LEN / 2;
@@ -45,12 +49,15 @@ public class UI {
 
 			g2.setFont(arial_font_40);
 			g2.setColor(Color.white);
-
 			g2.drawString(END_GAME_TEXT1, 300, 200);
 
 			g2.setFont(arial_font_60);
 			g2.setColor(Color.yellow);
 			g2.drawString(END_GAME_TEXT2, 350, 250);
+
+			g2.setFont(arial_font_40);
+			g2.setColor(Color.green);
+			g2.drawString(playersTimeString, 370, 300);
 
 			gPanel.gameThread = null;
 
@@ -59,6 +66,11 @@ public class UI {
 			g2.setColor(Color.white);
 			g2.drawImage(keyImg, 8, 8, 60, 60, null);
 			g2.drawString("x " + gPanel.player.numOfKeys, 68, 42);
+
+			// Time
+			playTime += (double) 1 / 60;
+
+			g2.drawString("Time: " + dFormat.format(playTime), gPanel.tileSize * 19, 42);
 
 			if (messageOn == true) {
 				g2.drawString(messageString, gPanel.tileSize / 2, gPanel.tileSize / 2 * 5);
