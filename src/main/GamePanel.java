@@ -40,7 +40,9 @@ public class GamePanel extends JPanel implements Runnable {
 	PlayerControls playerKey = new PlayerControls(this);
 	public CollisionChecker collisionChecker = new CollisionChecker(this);
 	public Player player;
-	Sound sound = new Sound();
+	Sound background_music = new Sound();
+	Sound sound_effect = new Sound();
+
 	Thread gameThread;
 
 	int playerXCoord = 100;
@@ -83,7 +85,7 @@ public class GamePanel extends JPanel implements Runnable {
 		aSetter.setObject();
 
 		// plays the sound of index 0
-		playSoundLoop(0);
+		playBackgroundMusic(0);
 	}
 
 	public void startGameThread() {
@@ -161,19 +163,19 @@ public class GamePanel extends JPanel implements Runnable {
 		g2.dispose();
 	}
 
-	public void playSoundLoop(int i) {
-		sound.setFile(i);
-		sound.play();
-		sound.loop();
+	public void playBackgroundMusic(int i) {
+		background_music.setFile(i);
+		background_music.play();
+		background_music.loop();
 	}
 
-	public void stopSound(int i) {
-		sound.stop();
+	public void stopBackgroundMusic(int i) {
+		background_music.stop();
 	}
 
-	public void playSoundOnce(int i) {
-		sound.setFile(i);
-		sound.play();
+	public void playSoundEffect(int i) {
+		sound_effect.setFile(i);
+		sound_effect.play();
 
 	}
 }

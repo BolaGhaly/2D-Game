@@ -198,19 +198,19 @@ public class Player extends Entity {
 			String objectName = gp.objects[index].objectName;
 			switch (objectName) {
 			case "Key":
-				gp.playSoundOnce(1);
+				gp.playSoundEffect(1);
 				numOfKeys++;
 				gp.objects[index] = null;
 				break;
 			case "Door":
 				if (numOfKeys > 0) {
-					gp.playSoundOnce(8);
+					gp.playSoundEffect(8);
 					gp.objects[index] = null;
 					numOfKeys--;
 				}
 				break;
 			case "Boots":
-				gp.playSoundOnce(6);
+				gp.playSoundEffect(6);
 				speed += 2;
 				gp.objects[index] = null;
 				break;
