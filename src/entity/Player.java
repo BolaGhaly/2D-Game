@@ -19,7 +19,7 @@ public class Player extends Entity {
 	public final int screenX;
 	public final int screenY;
 
-	int numOfKeys = 0;
+	public int numOfKeys = 0;
 
 	public Player(GamePanel gp, PlayerControls playerKey) {
 
@@ -198,21 +198,32 @@ public class Player extends Entity {
 			String objectName = gp.objects[index].objectName;
 			switch (objectName) {
 			case "Key":
-				gp.playSoundOnce(1);
+				gp.playSoundEffect(1);
 				numOfKeys++;
 				gp.objects[index] = null;
+				gp.ui.displayMessage("You got a key!");
 				break;
 			case "Door":
 				if (numOfKeys > 0) {
-					gp.playSoundOnce(8);
+					gp.playSoundEffect(8);
 					gp.objects[index] = null;
 					numOfKeys--;
+					gp.ui.displayMessage("You opened the door!");
+				} else {
+					gp.ui.displayMessage("You need a key!");
+
 				}
 				break;
 			case "Boots":
-				gp.playSoundOnce(6);
+				gp.playSoundEffect(6);
 				speed += 2;
 				gp.objects[index] = null;
+				gp.ui.displayMessage("Speed Up!");
+				break;
+			case "Chest":
+				gp.ui.gameFinished = true;
+				gp.stopBackgroundMusic(0);
+				gp.playSoundEffect(3);
 				break;
 			}
 
