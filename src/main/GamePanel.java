@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.security.PublicKey;
 
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
@@ -42,14 +43,14 @@ public class GamePanel extends JPanel implements Runnable {
 	public Player player;
 	Sound background_music = new Sound();
 	Sound sound_effect = new Sound();
-
 	Thread gameThread;
+	public UI ui = new UI(this);
 
 	int playerXCoord = 100;
 	int playerYCoord = 100;
 	int playerSpeed = 4;
 
-	public ParentObject[] objects = new ParentObject[5];
+	public ParentObject[] objects = new ParentObject[10];
 
 	public AssetSetter aSetter = new AssetSetter(this);
 
@@ -152,6 +153,9 @@ public class GamePanel extends JPanel implements Runnable {
 
 		//draw player(s)
 		player.draw(g2);
+
+		// UI
+		ui.draw(g2);
 
 		//draw objects
 		for (int i = 0; i < objects.length; i++) {
