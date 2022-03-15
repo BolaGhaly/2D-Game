@@ -52,6 +52,8 @@ public class UI {
 			g2.setColor(Color.yellow);
 			g2.drawString(END_GAME_TEXT2, 350, 250);
 
+			gPanel.gameThread = null;
+
 		} else {
 			g2.setFont(arial_font);
 			g2.setColor(Color.white);
