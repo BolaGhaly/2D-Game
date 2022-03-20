@@ -5,19 +5,21 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import main.GamePanel;
+import main.UtilityTool;
 
 public class ParentObject {
 
 	public BufferedImage objectSprite;
 	public String objectName;
-	public boolean collision=false;
+	public boolean collision = false;
 	public int worldX, worldY;
-	public Rectangle solidArea = new Rectangle(0,0,48,48);
-	public int solidAreaDefaultX=0;
-	public int solidAreaDefaultY=0;
-	
+	public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+	public int solidAreaDefaultX = 0;
+	public int solidAreaDefaultY = 0;
+	UtilityTool uTool = new UtilityTool();
+
 	public void draw(Graphics2D g2, GamePanel gp) {
-		
+
 		double screenX = worldX - gp.player.worldX + gp.player.screenX;
 		double screenY = worldY - gp.player.worldY + gp.player.screenY;
 
@@ -25,8 +27,7 @@ public class ParentObject {
 				&& worldX - gp.tileSize < gp.player.worldX + gp.player.screenX
 				&& worldY + gp.tileSize > gp.player.worldY - gp.player.screenY
 				&& worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-			g2.drawImage(objectSprite, (int) screenX, (int) screenY, gp.tileSize, gp.tileSize,
-					null);
+			g2.drawImage(objectSprite, (int) screenX, (int) screenY, gp.tileSize, gp.tileSize, null);
 		}
 	}
 }

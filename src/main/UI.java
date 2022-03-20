@@ -27,7 +27,7 @@ public class UI {
 		arial_font = new Font("Arial", Font.PLAIN, 28);
 		arial_font_40 = new Font("Arial", Font.BOLD, 40);
 
-		KeyObject key = new KeyObject();
+		KeyObject key = new KeyObject(gamePanel);
 		keyImg = key.objectSprite;
 	}
 
@@ -64,13 +64,13 @@ public class UI {
 		} else {
 			g2.setFont(arial_font);
 			g2.setColor(Color.white);
-			g2.drawImage(keyImg, 8, 8, 60, 60, null);
-			g2.drawString("x " + gPanel.player.numOfKeys, 68, 42);
+			g2.drawImage(keyImg, 20, 8, 60, 60, null);
+			g2.drawString("x " + gPanel.player.numOfKeys, 76, 40);
 
 			// Time
 			playTime += (double) 1 / 60;
 
-			g2.drawString("Time: " + dFormat.format(playTime), gPanel.tileSize * 19, 42);
+			g2.drawString("Time: " + dFormat.format(playTime), 880, 42);
 
 			if (messageOn == true) {
 				g2.drawString(messageString, gPanel.tileSize / 2, gPanel.tileSize / 2 * 5);
