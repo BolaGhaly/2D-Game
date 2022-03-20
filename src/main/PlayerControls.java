@@ -9,6 +9,7 @@ public class PlayerControls implements KeyListener {
 
 	public boolean moveUp, moveDown, moveLeft, moveRight;
 	GamePanel gamePanel;
+	public boolean checkDebugTime = false;
 
 	public PlayerControls(GamePanel gp) {
 		this.gamePanel = gp;
@@ -51,6 +52,15 @@ public class PlayerControls implements KeyListener {
 
 		if (keyCode == KeyEvent.VK_O) {
 			gamePanel.zoomInOut(-1);
+		}
+
+		// DEBUG
+		if (keyCode == KeyEvent.VK_T) {
+			if (checkDebugTime == false) {
+				checkDebugTime = true;
+			} else if (checkDebugTime == true) {
+				checkDebugTime = false;
+			}
 		}
 	}
 

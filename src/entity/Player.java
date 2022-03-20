@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.PlayerControls;
+import main.UtilityTool;
 
 public class Player extends Entity {
 	GamePanel gp;
@@ -49,7 +50,6 @@ public class Player extends Entity {
 	}
 
 	public void getPlayerImage() {
-		//System.out.println(gp.character);
 
 		if (this.gp.character == "Batman") {
 			try {
@@ -105,19 +105,6 @@ public class Player extends Entity {
 				e.printStackTrace();
 			}
 		}
-
-		//function for slicing and saving individual sprite from sheet
-
-		//				try{
-		//		            BufferedImage img = this.getSprite(3, 1, 48, 48);
-		//		
-		//		            File signal = new File("signal_character_select.png");
-		//		            ImageIO.write(img, "PNG", signal);
-		//		            System.out.println("Hello");        }
-		//		        catch(Exception e){
-		//		            e.printStackTrace();
-		//		        }
-
 	}
 
 	public void update() {
@@ -273,7 +260,7 @@ public class Player extends Entity {
 			break;
 		}
 
-		g2.drawImage(playerSprite, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(playerSprite, screenX, screenY, null);
 
 	}
 }
