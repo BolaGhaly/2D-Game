@@ -105,6 +105,26 @@ public class Player extends Entity {
 				e.printStackTrace();
 			}
 		}
+		
+		else if (this.gp.character == "Soldier 1") {
+			try {
+
+				spriteSheet = ImageIO.read(getClass().getResourceAsStream("/player/soldiers/soldier_sprite_sheet.png"));
+				up1 = this.getSprite(1, 4, 16, 16);
+				up2 = this.getSprite(3, 4, 16, 16);
+				down1 = this.getSprite(1, 1, 16, 16);
+				down2 = this.getSprite(3, 1, 16, 16);
+				left1 = this.getSprite(1, 2, 16, 16);
+				left2 = this.getSprite(3, 2, 16, 16);
+				right1 = this.getSprite(1, 3, 16, 16);
+				right2 = this.getSprite(3, 3, 16, 16);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 	}
 
 	public void update() {
@@ -260,7 +280,7 @@ public class Player extends Entity {
 			break;
 		}
 
-		g2.drawImage(playerSprite, screenX, screenY, null);
+		g2.drawImage(playerSprite, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
 	}
 }
