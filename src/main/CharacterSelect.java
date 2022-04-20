@@ -13,8 +13,8 @@ import main.GamePanel;
 public class CharacterSelect extends Frame implements ActionListener {
 
 	
-	JButton batman_button, robin_button, signal_button;
-	public BufferedImage batman, robin, signal;
+	JButton batman_button, robin_button, signal_button, soldier1_button;
+	public BufferedImage batman, robin, signal, soldier1;
 	public static GamePanel gamePanel;
 
 	CharacterSelect() {
@@ -33,6 +33,7 @@ public class CharacterSelect extends Frame implements ActionListener {
 			batman = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_character_select_128.png"));
 			robin = ImageIO.read(getClass().getResourceAsStream("/player/robin/robin_character_select_128.png"));
 			signal = ImageIO.read(getClass().getResourceAsStream("/player/signal/signal_character_select_128.png"));
+			soldier1=ImageIO.read(getClass().getResourceAsStream("/player/soldiers/soldier1_character_select_128.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -90,6 +91,11 @@ public class CharacterSelect extends Frame implements ActionListener {
 		signal_button = button.createButton(this, "Signal", signal, 400, 0, 200, 200);
 		signal_button.addActionListener(this);
 		add(signal_button);
+		
+		//Button for player to use Soldier 1
+		soldier1_button = button.createButton(this, "Soldier 1", soldier1, 0, 200, 200, 200);
+		soldier1_button.addActionListener(this);
+		add(soldier1_button);
 		
 		
 		
