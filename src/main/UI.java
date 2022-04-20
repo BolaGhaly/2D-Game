@@ -10,10 +10,11 @@ import object.KeyObject;
 
 public class UI {
 	GamePanel gPanel;
+	Graphics2D g2;
 	Font arial_font;
 	Font arial_font_40;
 	Font arial_font_60;
-	BufferedImage keyImg;
+//	BufferedImage keyImg;
 	public boolean messageOn = false;
 	public String messageString = "";
 	int messageCounter = 0;
@@ -27,8 +28,8 @@ public class UI {
 		arial_font = new Font("Arial", Font.PLAIN, 28);
 		arial_font_40 = new Font("Arial", Font.BOLD, 40);
 
-		KeyObject key = new KeyObject(gamePanel);
-		keyImg = key.objectSprite;
+//		KeyObject key = new KeyObject(gamePanel);
+//		keyImg = key.objectSprite;
 	}
 
 	public void displayMessage(String text) {
@@ -37,54 +38,31 @@ public class UI {
 	}
 
 	public void draw(Graphics2D g2) {
-		if (gameFinished == true) {
-
-			final String END_GAME_TEXT1 = "You found the treasure!";
-			final String END_GAME_TEXT2 = "Congratulations!!";
-			String playersTimeString = "Your Time: " + dFormat.format(playTime);
-			// final int END_GAME_TEXT_LEN = END_GAME_TEXT.length();
-
-			// int center_x = gPanel.screenWidth / 2 - END_GAME_TEXT_LEN / 2;
-			// int center_y = gPanel.screenHeight / 2 - gPanel.tileSize * 3;
-
-			g2.setFont(arial_font_40);
-			g2.setColor(Color.white);
-			g2.drawString(END_GAME_TEXT1, 300, 200);
-
-			g2.setFont(arial_font_60);
-			g2.setColor(Color.yellow);
-			g2.drawString(END_GAME_TEXT2, 350, 250);
-
-			g2.setFont(arial_font_40);
-			g2.setColor(Color.green);
-			g2.drawString(playersTimeString, 370, 300);
-
-			gPanel.gameThread = null;
-
-		} else {
-			g2.setFont(arial_font);
-			g2.setColor(Color.white);
-			g2.drawImage(keyImg, 20, 8, 60, 60, null);
-			g2.drawString("x " + gPanel.player.numOfKeys, 76, 40);
-
-			// Time
-			playTime += (double) 1 / 60;
-
-			g2.drawString("Time: " + dFormat.format(playTime), 880, 42);
-
-			if (messageOn == true) {
-				g2.drawString(messageString, gPanel.tileSize / 2, gPanel.tileSize / 2 * 5);
-
-				messageCounter++;
-
-				// 100 frames
-				if (messageCounter > 100) {
-					messageCounter = 0;
-					messageOn = false;
-				}
-			}
+		
+		this.g2=g2;
+		g2.setFont(arial_font_40);
+		g2.setColor(Color.white);
+		if(gPanel.gameState == gPanel.playState) {
+			//tbd
+		}
+		if(gPanel.gameState==gPanel.pauseState) {
+			drawPauseScreen();
 		}
 
 	}
-
+	
+	public void drawPauseScreen() {
+		String text = "Paused";
+		int y= gPanel.screenHeight/2;
+		int x = getHorizontalCenter(text);
+		
+		g2.drawString(text, x, y);
+	}
+	
+	public int getHorizontalCenter(String text) {
+		
+		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+		int x = gPanel.screenWidth/2-length/2;
+		return x;
+	}
 }
