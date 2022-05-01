@@ -14,7 +14,7 @@ public class PlayerControls implements KeyListener {
 	public PlayerControls(GamePanel gp) {
 		this.gamePanel = gp;
 	}
- 
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -43,11 +43,10 @@ public class PlayerControls implements KeyListener {
 			moveRight = true;
 		}
 		if (keyCode == KeyEvent.VK_P) {
-			if(gamePanel.gameState == gamePanel.playState) {
+			if (gamePanel.gameState == gamePanel.playState) {
 				gamePanel.gameState = gamePanel.pauseState;
-			}
-			else if(gamePanel.gameState == gamePanel.pauseState) {
-				gamePanel.gameState=gamePanel.pauseState;
+			} else if (gamePanel.gameState == gamePanel.pauseState) {
+				gamePanel.gameState = gamePanel.playState;
 			}
 		}
 

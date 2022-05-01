@@ -1,17 +1,11 @@
 package main;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.security.PublicKey;
-
 import javax.swing.JPanel;
-import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
-
 import entity.Player;
-import main.PlayerControls;
 import object.ParentObject;
 import tile.TileManager;
 
@@ -21,6 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
 	final int originalTileSize = 16; //16x16 tile 
 	final int scale = 3;
 	public String character = "";
+	long clipTime;
 
 	// map
 	public int tileSize = originalTileSize * scale; //48x48 tile
@@ -34,14 +29,12 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int maxWorldRow = 68;
 	public final int worldWidth = tileSize * maxWorldCol;
 	public final int worldHeight = tileSize * maxWorldRow;
-	
 
 	//Game State
 	public int gameState;
-	public final int playState=1;
-	public final int pauseState=2;
-	
-	
+	public final int playState = 1;
+	public final int pauseState = 2;
+
 	int FPS = 60;
 
 	TileManager tileM = new TileManager(this);
@@ -85,8 +78,8 @@ public class GamePanel extends JPanel implements Runnable {
 		int newPlayerWorldX = player.worldX * multiplier;
 		int newPlayerWorldY = player.worldY * multiplier;
 
-		player.worldX = newPlayerWorldX;
-		player.worldY = newPlayerWorldY;
+		// player.worldX = newPlayerWorldX;
+		// player.worldY = newPlayerWorldY;
 	}
 
 	public void setupGame() {
@@ -94,8 +87,8 @@ public class GamePanel extends JPanel implements Runnable {
 
 		// plays the sound of index 0
 		playBackgroundMusic(0);
-		
-		gameState=playState;
+
+		gameState = playState;
 	}
 
 	public void startGameThread() {
@@ -148,12 +141,12 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public void update() {
 
-		
-		if(gameState==playState) {
+		if (gameState == playState) {
 			player.update();
+			background_music.play();
 		}
-		if(gameState==pauseState) {
-			//nothing
+		if (gameState == pauseState) {
+			background_music.stop();
 		}
 	}
 
