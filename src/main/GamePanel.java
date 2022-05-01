@@ -143,7 +143,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 		if (gameState == playState) {
 			player.update();
-			background_music.play();
+			background_music.loop();
 		}
 		if (gameState == pauseState) {
 			background_music.stop();
