@@ -6,8 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="sprites"/>
 	<classpathentry kind="src" path="maps"/>
 	<classpathentry kind="src" path="Sounds"/>
+	<classpathentry kind="src" path="sprites"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

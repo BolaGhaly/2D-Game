@@ -1,5 +1,6 @@
 package main;
 
+import entity.MaleBlueBardNPC;
 import object.BootsObject;
 import object.ChestObject;
 import object.DoorObject;
@@ -11,6 +12,12 @@ public class AssetSetter {
 
 	public AssetSetter(GamePanel gp) {
 		this.gp = gp;
+	}
+	
+	public void setNPC() {
+		gp.npc[0] = new MaleBlueBardNPC(gp);
+		gp.npc[0].worldX = gp.tileSize*21;
+		gp.npc[0].worldY = gp.tileSize*21;
 	}
 
 	public void setObject() {

@@ -1,11 +1,18 @@
 package main;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.security.PublicKey;
+
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
+
+import entity.Entity;
 import entity.Player;
+import main.PlayerControls;
 import object.ParentObject;
 import tile.TileManager;
 
@@ -15,7 +22,6 @@ public class GamePanel extends JPanel implements Runnable {
 	final int originalTileSize = 16; //16x16 tile 
 	final int scale = 3;
 	public String character = "";
-	long clipTime;
 
 	// map
 	public int tileSize = originalTileSize * scale; //48x48 tile
@@ -29,12 +35,14 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int maxWorldRow = 68;
 	public final int worldWidth = tileSize * maxWorldCol;
 	public final int worldHeight = tileSize * maxWorldRow;
+	
 
 	//Game State
 	public int gameState;
-	public final int playState = 1;
-	public final int pauseState = 2;
-
+	public final int playState=1;
+	public final int pauseState=2;
+	
+	
 	int FPS = 60;
 
 	TileManager tileM = new TileManager(this);
@@ -51,6 +59,7 @@ public class GamePanel extends JPanel implements Runnable {
 	int playerSpeed = 4;
 
 	public ParentObject[] objects = new ParentObject[10];
+	public Entity npc[] = new Entity[10];
 
 	public AssetSetter aSetter = new AssetSetter(this);
 
@@ -78,17 +87,18 @@ public class GamePanel extends JPanel implements Runnable {
 		int newPlayerWorldX = player.worldX * multiplier;
 		int newPlayerWorldY = player.worldY * multiplier;
 
-		// player.worldX = newPlayerWorldX;
-		// player.worldY = newPlayerWorldY;
+		player.worldX = newPlayerWorldX;
+		player.worldY = newPlayerWorldY;
 	}
 
 	public void setupGame() {
 		aSetter.setObject();
+		aSetter.setNPC();
 
 		// plays the sound of index 0
 		playBackgroundMusic(0);
-
-		gameState = playState;
+		
+		gameState=playState;
 	}
 
 	public void startGameThread() {
@@ -141,15 +151,22 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public void update() {
 
-		if (gameState == playState) {
+		
+		if(gameState==playState) {
 			player.update();
-			background_music.loop();
+			
+			for(int i = 0; i < npc.length; i++) {
+				if(npc[i]!=null) {
+					npc[i].update();
+				}
+			}
 		}
-		if (gameState == pauseState) {
-			background_music.stop();
+		if(gameState==pauseState) {
+			//nothing
 		}
 	}
 
+	//draws all elements of the game
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
@@ -176,14 +193,24 @@ public class GamePanel extends JPanel implements Runnable {
 			if (objects[i] != null) {
 				objects[i].draw(g2, this);
 			}
+		
 		}
 
+		//draw NPCs
+		
+		for(int i = 0; i < npc.length; i++) {
+			if(npc[i]!= null) {	
+				npc[i].draw(g2);
+			}
+		
 		// DEBUG
 		if (playerKey.checkDebugTime == true) {
 			long drawEnd = System.nanoTime();
 			long passed = drawEnd - drawStart;
 			System.out.println("Draw Time: " + passed);
 		}
+		
+}
 
 		g2.dispose();
 	}

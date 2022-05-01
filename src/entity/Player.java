@@ -14,7 +14,7 @@ import main.PlayerControls;
 import main.UtilityTool;
 
 public class Player extends Entity {
-	GamePanel gp;
+
 	PlayerControls playerKey;
 
 	public final int screenX;
@@ -26,7 +26,6 @@ public class Player extends Entity {
 
 		super(gp);
 
-		this.gp = gp;
 		this.playerKey = playerKey;
 
 		screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
