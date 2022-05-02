@@ -166,7 +166,11 @@ public class Player extends Entity {
 			//check for object collision
 			int objectIndex = gp.collisionChecker.checkObject(this, true);
 			pickUpObject(objectIndex);
-
+			
+			//check for npc collision
+			int npcIndex = gp.collisionChecker.checkEntity(this, gp.npc);
+			interactNPC(npcIndex);
+			
 			// If collision is false, player can move
 			if (collisionOn == false) {
 				switch (direction) {
@@ -200,6 +204,8 @@ public class Player extends Entity {
 
 	public void pickUpObject(int index) {
 		if (index != 999) {
+			
+			
 
 //			String objectName = gp.objects[index].objectName;
 //			switch (objectName) {
@@ -236,6 +242,12 @@ public class Player extends Entity {
 		}
 	}
 
+	public void interactNPC(int i) {
+		if(i!=999) {
+			System.out.println("COLLISION!");
+		}
+	}
+	
 	public void draw(Graphics2D g2) {
 
 		//		g2.setColor(Color.white);

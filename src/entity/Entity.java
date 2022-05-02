@@ -39,6 +39,8 @@ public class Entity {
 		
 		collisionOn = false;
 		gp.collisionChecker.checkTile(this);
+		gp.collisionChecker.checkObject(this, false);
+		gp.collisionChecker.checkPlayer(this);
 		
 		//if collision is false, entity can move
 		if (collisionOn == false) {
@@ -56,6 +58,16 @@ public class Entity {
 				worldX += speed;
 				break;
 			}
+		}
+		
+		spriteCounter++;
+		if (spriteCounter > 10) {
+			if (spriteNum == 1) {
+				spriteNum = 2;
+			} else if (spriteNum == 2) {
+				spriteNum = 1;
+			}
+			spriteCounter = 0;
 		}
 	};
 	
