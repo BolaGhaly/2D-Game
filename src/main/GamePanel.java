@@ -240,22 +240,12 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 		
 		//remove the entities
-		for(int i = 0; i<entityList.size(); i++) {
-			entityList.remove(i);
-		}
+		entityList.clear();
 
 		// UI
 		ui.draw(g2);
 
-		//draw objects
-//		for (int i = 0; i < objects.length; i++) {
-//			if (objects[i] != null) {
-//				objects[i].draw(g2, this);
-//			}
-//		
-//		}
 
-		//draw NPCs
 		
 		
 		// DEBUG
