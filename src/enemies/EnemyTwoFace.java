@@ -25,7 +25,7 @@ public class EnemyTwoFace extends Entity{
 	public void getSprite() {
 		try {
 
-			spriteSheet = ImageIO.read(getClass().getResourceAsStream("/enemies/Two_Face_Sprite_Sheet.png"));
+			spriteSheet = ImageIO.read(getClass().getResourceAsStream("/enemies/Two_Face_Sprite_Sheet.jpeg"));
 			up1 = this.getSprite(1, 4, 48, 48);
 			up2 = this.getSprite(3, 4, 48, 48);
 			down1 = this.getSprite(1, 1, 48, 48);

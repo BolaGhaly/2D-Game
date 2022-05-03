@@ -53,6 +53,9 @@ public class Entity {
 		gp.collisionChecker.checkTile(this);
 		gp.collisionChecker.checkObject(this, false);
 		gp.collisionChecker.checkPlayer(this);
+		gp.collisionChecker.checkEntity(this, gp.npc);
+		gp.collisionChecker.checkEntity(this, gp.enemies);
+		
 		
 		
 		//if collision is false, entity can move

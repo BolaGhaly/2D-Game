@@ -51,7 +51,6 @@ public class GamePanel extends JPanel implements Runnable {
 	TileManager tileM = new TileManager(this);
 	public PlayerControls playerKey = new PlayerControls(this);
 	public CollisionChecker collisionChecker = new CollisionChecker(this);
-	public Player player;
 	Sound background_music = new Sound();
 	Sound sound_effect = new Sound();
 	Thread gameThread;
@@ -62,9 +61,16 @@ public class GamePanel extends JPanel implements Runnable {
 	int playerYCoord = 100;
 	int playerSpeed = 4;
 
+	
+	//Entity Arrays
+	public Player player = new Player(this, playerKey);
 	public Entity objects[] = new Entity[10];
 	public Entity npc[] = new Entity[10];
+	public Entity enemies[] = new Entity[20];
 	ArrayList <Entity> entityList = new ArrayList<>();
+	
+	
+	
 
 	public AssetSetter aSetter = new AssetSetter(this);
 
@@ -99,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void setupGame() {
 		aSetter.setObject();
 		aSetter.setNPC();
+		aSetter.setEnemies();
 
 		// plays the sound of index 0
 		playBackgroundMusic(0);
@@ -165,6 +172,12 @@ public class GamePanel extends JPanel implements Runnable {
 					npc[i].update();
 				}
 			}
+			
+			for(int i = 0; i < enemies.length; i++) {
+				if(enemies[i]!=null) {
+					enemies[i].update();
+				}
+			}
 		}
 		if(gameState==pauseState) {
 			//nothing
@@ -200,6 +213,12 @@ public class GamePanel extends JPanel implements Runnable {
 		for(int i = 0; i<objects.length; i++) {
 			if(objects[i]!=null) {
 				entityList.add(objects[i]);
+			}
+		}
+		
+		for(int i = 0; i<enemies.length; i++) {
+			if(enemies[i]!=null) {
+				entityList.add(enemies[i]);
 			}
 		}
 		

@@ -43,6 +43,8 @@ public class Player extends Entity {
 	public void setDefaultValues() {
 		worldX = gp.tileSize * 23;
 		worldY = gp.tileSize * 21;
+//		worldX = gp.tileSize * 10;
+//		worldY = gp.tileSize * 13;
 		// speed = 4;
 		speed = gp.worldWidth / 600;
 		direction = "down";
@@ -176,6 +178,10 @@ public class Player extends Entity {
 			int npcIndex = gp.collisionChecker.checkEntity(this, gp.npc);
 			interactNPC(npcIndex);
 			
+			//check for enemy collision
+			int enemyIndex = gp.collisionChecker.checkEntity(this, gp.enemies);
+			enemyContact(enemyIndex);
+			
 			//check event
 			gp.event.checkEvent();
 			
@@ -247,6 +253,13 @@ public class Player extends Entity {
 //				break;
 //			}
 
+		}
+	}
+	
+	public void enemyContact(int i) {
+		
+		if(i!=999) {
+			currentHealth-=1;
 		}
 	}
 
