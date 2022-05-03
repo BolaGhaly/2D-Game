@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
@@ -195,7 +197,23 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 		}
 		
+		for(int i = 0; i<objects.length; i++) {
+			if(objects[i]!=null) {
+				entityList.add(objects[i]);
+			}
+		}
 		
+		//Sort the entity array list
+		Collections.sort(entityList, new Comparator<Entity>() {
+
+			@Override
+			public int compare(Entity e1, Entity e2) {
+				// TODO Auto-generated method stub
+				int result = Integer.compare(e1.worldY, e2.worldY);
+				return result;
+			}
+			
+		});
 		
 		//Drawing the entities
 		for(int i = 0; i < entityList.size(); i++) {
