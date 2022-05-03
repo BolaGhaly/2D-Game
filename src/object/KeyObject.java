@@ -4,24 +4,19 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import entity.Entity;
 import main.GamePanel;
 import main.UtilityTool;
 
-public class KeyObject extends ParentObject {
-	GamePanel gp;
+public class KeyObject extends Entity {
 
 	public KeyObject(GamePanel gp) {
 
-		this.gp = gp;
+		super(gp);
 
 		objectName = "Key";
 
-		try {
-			objectSprite1 = ImageIO.read(getClass().getResourceAsStream("/objects/batarang.png"));
-			uTool.scaleImg(objectSprite1, gp.tileSize, gp.tileSize);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		down1 = objectSetup("/objects/key");
 
 	}
 }

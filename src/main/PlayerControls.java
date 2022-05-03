@@ -52,7 +52,7 @@ public class PlayerControls implements KeyListener {
 			}
 			if (keyCode == KeyEvent.VK_ENTER) {
 				startDialogue = true;
-				System.out.print(startDialogue);
+				
 			}
 
 			// Zoom in and out

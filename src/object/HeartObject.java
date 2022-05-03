@@ -4,28 +4,22 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import entity.Entity;
 import main.GamePanel;
 
-public class HeartObject extends ParentObject {
+public class HeartObject extends Entity {
 	
 	GamePanel gp;
 
 		public HeartObject(GamePanel gp) {
 
-			this.gp = gp;
+			super(gp);
 
 			objectName = "Heart";
 
-			try {
-				objectSprite1 = ImageIO.read(getClass().getResourceAsStream("/objects/heart_full.png"));
-				objectSprite2 = ImageIO.read(getClass().getResourceAsStream("/objects/heart_half.png"));
-				objectSprite3 = ImageIO.read(getClass().getResourceAsStream("/objects/heart_empty.png"));
-				objectSprite1 = uTool.scaleImg(objectSprite1, gp.tileSize, gp.tileSize);
-				objectSprite2 = uTool.scaleImg(objectSprite2, gp.tileSize, gp.tileSize);
-				objectSprite3 = uTool.scaleImg(objectSprite3, gp.tileSize, gp.tileSize);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			objectSprite1 = objectSetup("/objects/heart_full");
+			objectSprite2 = objectSetup("/objects/heart_half");
+			objectSprite3 = objectSetup("/objects/heart_empty");
 
 		}
 }

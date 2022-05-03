@@ -7,9 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
+import entity.Entity;
 import object.HeartObject;
 import object.KeyObject;
-import object.ParentObject;
 
 public class UI {
 	GamePanel gPanel;
@@ -39,7 +39,7 @@ public class UI {
 //		keyImg = key.objectSprite;
 		
 		//HUD
-		ParentObject heart = new HeartObject(gamePanel);
+		Entity heart = new HeartObject(gamePanel);
 		heartFull = heart.objectSprite1;
 		heartHalf = heart.objectSprite2;
 		heartEmpty = heart.objectSprite3;

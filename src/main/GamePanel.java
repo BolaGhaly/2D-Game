@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.security.PublicKey;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
@@ -13,7 +14,6 @@ import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
 import entity.Entity;
 import entity.Player;
 import main.PlayerControls;
-import object.ParentObject;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -60,8 +60,9 @@ public class GamePanel extends JPanel implements Runnable {
 	int playerYCoord = 100;
 	int playerSpeed = 4;
 
-	public ParentObject[] objects = new ParentObject[10];
+	public Entity objects[] = new Entity[10];
 	public Entity npc[] = new Entity[10];
+	ArrayList <Entity> entityList = new ArrayList<>();
 
 	public AssetSetter aSetter = new AssetSetter(this);
 
@@ -185,25 +186,40 @@ public class GamePanel extends JPanel implements Runnable {
 		tileM.draw(g2);
 
 		//draw player(s)
-		player.draw(g2);
+		
+		entityList.add(player);
+		
+		for(int i = 0; i<npc.length; i++) {
+			if(npc[i]!=null) {
+				entityList.add(npc[i]);
+			}
+		}
+		
+		
+		
+		//Drawing the entities
+		for(int i = 0; i < entityList.size(); i++) {
+			entityList.get(i).draw(g2);
+		}
+		
+		//remove the entities
+		for(int i = 0; i<entityList.size(); i++) {
+			entityList.remove(i);
+		}
 
 		// UI
 		ui.draw(g2);
 
 		//draw objects
-		for (int i = 0; i < objects.length; i++) {
-			if (objects[i] != null) {
-				objects[i].draw(g2, this);
-			}
-		
-		}
+//		for (int i = 0; i < objects.length; i++) {
+//			if (objects[i] != null) {
+//				objects[i].draw(g2, this);
+//			}
+//		
+//		}
 
 		//draw NPCs
 		
-		for(int i = 0; i < npc.length; i++) {
-			if(npc[i]!= null) {	
-				npc[i].draw(g2);
-			}
 		
 		// DEBUG
 		if (playerKey.checkDebugTime == true) {
@@ -212,7 +228,7 @@ public class GamePanel extends JPanel implements Runnable {
 			System.out.println("Draw Time: " + passed);
 		}
 		
-}
+
 
 		g2.dispose();
 	}

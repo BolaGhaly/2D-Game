@@ -3,8 +3,12 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import main.GamePanel;
+import main.UtilityTool;
 
 public class Entity {
 
@@ -12,7 +16,7 @@ public class Entity {
 	public int worldX, worldY;
 	public double speed;
 	public BufferedImage spriteSheet, up1, up2, down1, down2, left1, left2, right1, right2;
-	public String direction;
+	public String direction="down"; 
 	public int spriteCounter = 0;
 	public int spriteNum = 1;
 	public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
@@ -20,6 +24,8 @@ public class Entity {
 	public boolean collisionOn = false;
 	public int directionChangeCounter = 0;
 	String dialogues[] = new String[20]; 
+	public BufferedImage objectSprite1, objectSprite2, objectSprite3;
+	public String objectName;
 	
 	//character stats
 	public int maxHealth;
@@ -149,5 +155,21 @@ public class Entity {
 		g2.drawImage(entitySprite, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
 	}
+	
+	public BufferedImage objectSetup(String spritePath) {
+		
+		UtilityTool uTool = new UtilityTool();
+		BufferedImage sprite = null;
+		
+		try {
+			sprite = ImageIO.read(getClass().getResourceAsStream(spritePath+".png"));
+			sprite = uTool.scaleImg(sprite, gp.tileSize, gp.tileSize);
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		return sprite;
+	}
+	
+	
 
 }

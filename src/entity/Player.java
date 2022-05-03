@@ -254,7 +254,7 @@ public class Player extends Entity {
 		if(i!=999) {
 			
 			if(gp.playerKey.startDialogue==true) {
-				System.out.print(gp.playerKey.startDialogue);
+				
 				gp.gameState = gp.dialogueState;
 				gp.npc[i].speak();
 				
