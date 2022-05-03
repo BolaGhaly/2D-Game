@@ -164,7 +164,9 @@ public class CollisionChecker {
 	
 		}
 	
-	public void checkPlayer(Entity entity){
+	public boolean checkPlayer(Entity entity){
+		
+		boolean playerContact =false;
 				
 				entity.solidArea.x = entity.worldX + entity.solidArea.x;
 				entity.solidArea.y = entity.worldY + entity.solidArea.y;
@@ -189,6 +191,7 @@ public class CollisionChecker {
 				}
 				if(entity.solidArea.intersects(gamePanel.player.solidArea)) {
 					entity.collisionOn=true;
+					playerContact=true;
 				}
 				
 				entity.solidArea.x = entity.solidAreaDefaultX;
@@ -196,6 +199,7 @@ public class CollisionChecker {
 				gamePanel.player.solidArea.x= gamePanel.player.solidAreaDefaultX;
 				gamePanel.player.solidArea.y= gamePanel.player.solidAreaDefaultY;
 
+				return playerContact;
 		
 	}
 }

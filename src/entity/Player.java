@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -335,7 +336,11 @@ public class Player extends Entity {
 			break;
 		}
 
+		if(invincible ==true) {
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+		}
 		g2.drawImage(playerSprite, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 
 	}
 }
