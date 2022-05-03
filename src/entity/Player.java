@@ -137,7 +137,7 @@ public class Player extends Entity {
 	public void update() {
 
 		if (playerKey.moveDown == true || playerKey.moveUp == true || playerKey.moveRight == true
-				|| playerKey.moveLeft == true) {
+				|| playerKey.moveLeft == true || playerKey.startDialogue==true) {
 
 			if (playerKey.moveUp == true) {
 
@@ -187,7 +187,7 @@ public class Player extends Entity {
 			gp.event.checkEvent();
 			
 			// If collision is false, player can move
-			if (collisionOn == false) {
+			if (collisionOn == false && playerKey.startDialogue == false) {
 				switch (direction) {
 				case "up":
 					worldY -= speed;
@@ -203,6 +203,8 @@ public class Player extends Entity {
 					break;
 				}
 			}
+			
+			gp.playerKey.startDialogue = false;
 
 			spriteCounter++;
 			if (spriteCounter > 10) {
