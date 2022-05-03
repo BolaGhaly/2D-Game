@@ -26,6 +26,7 @@ public class Entity {
 	String dialogues[] = new String[20]; 
 	public BufferedImage objectSprite1, objectSprite2, objectSprite3;
 	public String objectName;
+	public String entityName;
 	
 	//character stats
 	public int maxHealth;
