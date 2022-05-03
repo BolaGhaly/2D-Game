@@ -20,6 +20,7 @@ public class UI {
 	public String messageString = "";
 	int messageCounter = 0;
 	public boolean gameFinished = false;
+	public String dialouge;
 	
 	
 
@@ -79,16 +80,23 @@ public class UI {
 		
 		drawSubWindow(x, y, width, height);
 		
-		
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20F));
+		x+=gPanel.tileSize;
+		y+=gPanel.tileSize;
+		g2.drawString(dialouge, x, y);
 	}
 	
 	public void drawSubWindow(int x, int y, int width, int height) {
 		
-		g2.setColor(Color.black);
+		//color of the sub window
+		Color mainColor = new Color(0,0,0,200);
+		g2.setColor(mainColor);
 		g2.fillRoundRect(x, y, width, height, 35, 35);
 		
+		//color of the sub window's border
+		Color borderColor = new Color(255, 255, 255);
 		g2.setStroke(new BasicStroke(5));
-		g2.setColor(Color.white);
+		g2.setColor(borderColor);
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 35, 35);
 	}
 	

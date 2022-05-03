@@ -244,8 +244,17 @@ public class Player extends Entity {
 
 	public void interactNPC(int i) {
 		if(i!=999) {
-			gp.gameState = gp.dialogueState;
+			
+			if(gp.playerKey.startDialogue==true) {
+				System.out.print(gp.playerKey.startDialogue);
+				gp.gameState = gp.dialogueState;
+				gp.npc[i].speak();
+				
+			}
+			
 		}
+		
+		gp.playerKey.startDialogue=false;
 	}
 	
 	public void draw(Graphics2D g2) {

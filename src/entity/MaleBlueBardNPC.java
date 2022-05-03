@@ -14,7 +14,7 @@ public class MaleBlueBardNPC extends Entity{
 		// TODO Auto-generated constructor stub
 		
 		direction = "down";
-		speed = gp.worldWidth / 1200;
+		speed = gp.worldWidth / 3200;
 		
 		//get sprites for this NPC
 		try {
@@ -33,6 +33,8 @@ public class MaleBlueBardNPC extends Entity{
 			e.printStackTrace();
 		}
 		
+		setDialogue();
+		
 		
 	}
 	
@@ -40,8 +42,8 @@ public class MaleBlueBardNPC extends Entity{
 		
 		
 		directionChangeCounter++;
-		//makes it so that direction only changes once every 10 frames
-		if(directionChangeCounter==30) {
+		//makes it so that direction only changes once every 60 frames
+		if(directionChangeCounter==120) {
 		Random random = new Random();
 		int i = random.nextInt(100)+1; //random number from 1-100
 		if(i<=25) {
@@ -58,6 +60,31 @@ public class MaleBlueBardNPC extends Entity{
 		}
 		
 		directionChangeCounter=0;
+		}
+	}
+	
+	public void setDialogue() {
+		 
+		dialogues[0] = "Whats up gang?";
+	}
+	
+	public void speak() {
+		
+		gp.ui.dialouge = dialogues[0];
+		
+		switch(gp.player.direction) {
+		case "up":
+			direction = "down";
+			break;
+		case "down":
+			direction = "up";
+			break;
+		case "left":
+			direction = "right";
+			break;
+		case "right":
+			direction = "left";
+			break;
 		}
 	}
 	
