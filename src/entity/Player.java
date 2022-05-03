@@ -46,6 +46,11 @@ public class Player extends Entity {
 		// speed = 4;
 		speed = gp.worldWidth / 600;
 		direction = "down";
+		
+		//Player Stats
+		maxHealth = 6;
+		currentHealth = 6;
+		
 	}
 
 	public void getPlayerImage() {
@@ -171,6 +176,9 @@ public class Player extends Entity {
 			int npcIndex = gp.collisionChecker.checkEntity(this, gp.npc);
 			interactNPC(npcIndex);
 			
+			//check event
+			gp.event.checkEvent();
+			
 			// If collision is false, player can move
 			if (collisionOn == false) {
 				switch (direction) {
@@ -256,6 +264,8 @@ public class Player extends Entity {
 		
 		gp.playerKey.startDialogue=false;
 	}
+	
+	
 	
 	public void draw(Graphics2D g2) {
 

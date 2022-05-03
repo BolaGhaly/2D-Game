@@ -20,30 +20,61 @@ public class TileManager {
 	public TileManager(GamePanel gamePanel) {
 		this.gamePanel = gamePanel;
 
-		tile = new Tile[10];
+		tile = new Tile[50];
 		mapTileNum = new int[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
 		getTileImage();
-		loadMap("/worldMap/worldMap.txt");
+		loadMap("/worldMap/worldV2.txt");
 	}
 
 	public void getTileImage() {
-		// earth
-		tileSetup(0, "earth", false);
-
-		// wall
-		tileSetup(1, "wall", true);
-
-		// grass
-		tileSetup(2, "grass01", false);
-
-		// tree
-		tileSetup(3, "tree", true);
-
-		// water
-		tileSetup(4, "water00", true);
-
-		// sand
-		tileSetup(5, "sand", false);
+		
+		tileSetup(0, "grass00", false);
+		tileSetup(1, "grass00", false);
+		tileSetup(2, "grass00", false);
+		tileSetup(3, "grass00", false);
+		tileSetup(4, "grass00", false);
+		tileSetup(5, "grass00", false);
+		tileSetup(6, "grass00", false);
+		tileSetup(7, "grass00", false);
+		tileSetup(8, "grass00", false);
+		tileSetup(9, "grass00", false);
+		
+		
+		tileSetup(10, "grass00", false);
+		tileSetup(11, "grass01", false);
+		tileSetup(12, "water00", true);
+		tileSetup(13, "water01", true);
+		tileSetup(14, "water02", true);
+		tileSetup(15, "water03", true);
+		tileSetup(16, "water04", true);
+		tileSetup(17, "water05", true);
+		tileSetup(18, "water06", true);
+		tileSetup(19, "water07", true);
+		tileSetup(20, "water08", true);
+		tileSetup(21, "water09", true);
+		tileSetup(22, "water10", true);
+		tileSetup(23, "water11", true);
+		tileSetup(24, "water12", true);
+		tileSetup(25, "water13", true);
+		tileSetup(26, "road00", false);
+		tileSetup(27, "road01", false);
+		tileSetup(28, "road02", false);
+		tileSetup(29, "road03", false);
+		tileSetup(30, "road04", false);
+		tileSetup(31, "road05", false);
+		tileSetup(32, "road06", false);
+		tileSetup(33, "road07", false);
+		tileSetup(34, "road08", false);
+		tileSetup(35, "road09", false);
+		tileSetup(36, "road10", false);
+		tileSetup(37, "road11", false);
+		tileSetup(38, "road12", false);
+		tileSetup(39, "earth", false);
+		tileSetup(40, "wall", true);
+		tileSetup(41, "tree", true);
+		
+		
+		
 	}
 
 	public void tileSetup(int index, String imagePath, boolean collision) {
