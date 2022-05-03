@@ -29,6 +29,7 @@ public class Entity {
 	public String entityName;
 	public Boolean invincible=false;
 	public int invincibleCounter=0;
+	public String entityType;
 	
 	//character stats
 	public int maxHealth;
@@ -54,10 +55,16 @@ public class Entity {
 		collisionOn = false;
 		gp.collisionChecker.checkTile(this);
 		gp.collisionChecker.checkObject(this, false);
-		gp.collisionChecker.checkPlayer(this);
+		boolean playerContact = gp.collisionChecker.checkPlayer(this);
 		gp.collisionChecker.checkEntity(this, gp.npc);
 		gp.collisionChecker.checkEntity(this, gp.enemies);
 		
+		if(this.entityType == "enemy" && playerContact==true) {
+			if(gp.player.invincible==false) {
+				gp.player.currentHealth-=1;
+				gp.player.invincible=true;
+			}
+		}
 		
 		
 		//if collision is false, entity can move

@@ -17,6 +17,7 @@ public class EnemyTwoFace extends Entity{
 		speed = 1;
 		maxHealth = 2;
 		currentHealth = maxHealth;
+		entityType="enemy";
 		
 		getSprite();
 		
