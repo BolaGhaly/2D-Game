@@ -22,8 +22,8 @@ public class Entity {
 	String dialogues[] = new String[20]; 
 	
 	//character stats
-	public int maxLife;
-	public int life;
+	public int maxHealth;
+	public int currentHealth;
 
 	public BufferedImage getSprite(int column, int row, int width, int height) {
 		BufferedImage sprite = spriteSheet.getSubimage(column * width - width, row * height - height, width, height);
@@ -46,6 +46,7 @@ public class Entity {
 		gp.collisionChecker.checkTile(this);
 		gp.collisionChecker.checkObject(this, false);
 		gp.collisionChecker.checkPlayer(this);
+		
 		
 		//if collision is false, entity can move
 		if (collisionOn == false) {

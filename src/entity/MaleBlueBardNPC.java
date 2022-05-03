@@ -14,7 +14,7 @@ public class MaleBlueBardNPC extends Entity{
 		// TODO Auto-generated constructor stub
 		
 		direction = "down";
-		speed = gp.worldWidth / 3200;
+		speed = gp.worldWidth / 1600;
 		
 		//get sprites for this NPC
 		try {

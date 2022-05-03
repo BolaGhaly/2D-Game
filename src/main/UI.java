@@ -7,7 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
+import object.HeartObject;
 import object.KeyObject;
+import object.ParentObject;
 
 public class UI {
 	GamePanel gPanel;
@@ -21,6 +23,7 @@ public class UI {
 	int messageCounter = 0;
 	public boolean gameFinished = false;
 	public String dialogue;
+	BufferedImage heartFull, heartHalf, heartEmpty;
 	
 	
 
@@ -34,6 +37,12 @@ public class UI {
 
 //		KeyObject key = new KeyObject(gamePanel);
 //		keyImg = key.objectSprite;
+		
+		//HUD
+		ParentObject heart = new HeartObject(gamePanel);
+		heartFull = heart.objectSprite1;
+		heartHalf = heart.objectSprite2;
+		heartEmpty = heart.objectSprite3;
 	}
 
 	public void displayMessage(String text) {
@@ -48,19 +57,54 @@ public class UI {
 		g2.setFont(arial_font_40);
 		g2.setColor(Color.white);
 		if(gPanel.gameState == gPanel.playState) {
-			//tbd
+			
+			drawPlayerLife();
 		}
 		
 		//pause state
 		if(gPanel.gameState==gPanel.pauseState) {
 			drawPauseScreen();
+			drawPlayerLife();
 		}
 		
 		//dialogue state
 		if(gPanel.gameState==gPanel.dialogueState) {
 			drawDialogueScreen();
+			drawPlayerLife();
 		}
 
+	}
+	
+	public void drawPlayerLife() {
+		
+		int x = gPanel.tileSize/2;
+		int y = gPanel.tileSize/2;
+		
+		int i = 0;
+		
+		//Drawing max health
+		while(i<gPanel.player.maxHealth/2) {
+			g2.drawImage(heartEmpty, x, y, null);
+			i++;
+			x += gPanel.tileSize;
+		}
+		
+		//reset
+		x = gPanel.tileSize/2;
+		y = gPanel.tileSize/2;
+		
+		i = 0;
+		
+		//Drawing current health
+		while(i<gPanel.player.currentHealth) {
+			g2.drawImage(heartHalf,  x,  y, null);
+			i++;
+			if(i<gPanel.player.currentHealth) {
+				g2.drawImage(heartFull, x, y, null);
+			}
+			i++;
+			x+=gPanel.tileSize;
+		}
 	}
 	
 	public void drawPauseScreen() {
@@ -74,7 +118,7 @@ public class UI {
 	public void drawDialogueScreen() {
 		
 		int x=gPanel.tileSize*2, 
-			y=gPanel.tileSize/2,
+			y=gPanel.tileSize*2,
 			width=gPanel.screenWidth-(gPanel.tileSize*4), 
 			height=gPanel.tileSize*3;
 		
