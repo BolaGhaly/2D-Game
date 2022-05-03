@@ -213,6 +213,14 @@ public class Player extends Entity {
 				spriteCounter = 0;
 			}
 		}
+		
+		if(invincible == true) {
+			invincibleCounter++;
+			if(invincibleCounter > 60) {
+				invincible=false;
+				invincibleCounter=0;
+			}
+		}
 
 	}
 
@@ -259,7 +267,11 @@ public class Player extends Entity {
 	public void enemyContact(int i) {
 		
 		if(i!=999) {
-			currentHealth-=1;
+			if(invincible==false) {
+				currentHealth -= 1;
+				invincible = true;
+			}
+			
 		}
 	}
 

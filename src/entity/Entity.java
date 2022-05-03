@@ -27,6 +27,8 @@ public class Entity {
 	public BufferedImage objectSprite1, objectSprite2, objectSprite3;
 	public String objectName;
 	public String entityName;
+	public Boolean invincible=false;
+	public int invincibleCounter=0;
 	
 	//character stats
 	public int maxHealth;
