@@ -23,13 +23,13 @@ public class Event {
 	
 	public void checkEvent() {
 		
-		if(hit(27,16,"right") == true) {
-			damgePit(gp.dialogueState);
-		}
+//		if(rockTrap(23,21,"any") == true) {
+//			damgePit(gp.dialogueState);
+//		}
 	}
 	
-	public boolean hit(int eventCol, int eventRow, String requiredDirection) {
-		boolean hit = false;
+	public boolean rockTrap(int eventCol, int eventRow, String requiredDirection) {
+		boolean damaged = false;
 		
 		gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
 		gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
@@ -38,7 +38,7 @@ public class Event {
 		
 		if(gp.player.solidArea.intersects(eventRectangle)){
 			if(gp.player.direction.contentEquals(requiredDirection) || requiredDirection.contentEquals("any")){
-				hit=true;
+				damaged=true;
 			}
 		}
 		
@@ -48,7 +48,7 @@ public class Event {
 		eventRectangle.x = eventRectangleDefaultY;
 		
 		
-		return hit;
+		return damaged;
 	}
 	
 	public void damgePit(int gameState) {
