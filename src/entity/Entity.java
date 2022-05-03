@@ -20,6 +20,10 @@ public class Entity {
 	public boolean collisionOn = false;
 	public int directionChangeCounter = 0;
 	String dialogues[] = new String[20]; 
+	
+	//character stats
+	public int maxLife;
+	public int life;
 
 	public BufferedImage getSprite(int column, int row, int width, int height) {
 		BufferedImage sprite = spriteSheet.getSubimage(column * width - width, row * height - height, width, height);
@@ -74,6 +78,22 @@ public class Entity {
 	
 	public void speak() {
 		
+		gp.ui.dialogue = dialogues[0];
+		
+		switch(gp.player.direction) {
+		case "up":
+			direction = "down";
+			break;
+		case "down":
+			direction = "up";
+			break;
+		case "left":
+			direction = "right";
+			break;
+		case "right":
+			direction = "left";
+			break;
+		}
 	}
 	
 	//drawing the entity

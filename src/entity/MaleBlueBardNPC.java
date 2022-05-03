@@ -70,22 +70,7 @@ public class MaleBlueBardNPC extends Entity{
 	
 	public void speak() {
 		
-		gp.ui.dialouge = dialogues[0];
-		
-		switch(gp.player.direction) {
-		case "up":
-			direction = "down";
-			break;
-		case "down":
-			direction = "up";
-			break;
-		case "left":
-			direction = "right";
-			break;
-		case "right":
-			direction = "left";
-			break;
-		}
+		super.speak();
 	}
 	
 	

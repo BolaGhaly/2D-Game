@@ -9,7 +9,7 @@ import main.UtilityTool;
 
 public class ParentObject {
 
-	public BufferedImage objectSprite;
+	public BufferedImage objectSprite1, objectSprite2, objectSprite3;
 	public String objectName;
 	public boolean collision = false;
 	public int worldX, worldY;
@@ -27,7 +27,7 @@ public class ParentObject {
 				&& worldX - gp.tileSize < gp.player.worldX + gp.player.screenX
 				&& worldY + gp.tileSize > gp.player.worldY - gp.player.screenY
 				&& worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-			g2.drawImage(objectSprite, (int) screenX, (int) screenY, gp.tileSize, gp.tileSize, null);
+			g2.drawImage(objectSprite1, (int) screenX, (int) screenY, gp.tileSize, gp.tileSize, null);
 		}
 	}
 }

@@ -20,7 +20,7 @@ public class UI {
 	public String messageString = "";
 	int messageCounter = 0;
 	public boolean gameFinished = false;
-	public String dialouge;
+	public String dialogue;
 	
 	
 
@@ -83,7 +83,12 @@ public class UI {
 		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20F));
 		x+=gPanel.tileSize;
 		y+=gPanel.tileSize;
-		g2.drawString(dialouge, x, y);
+		
+		for(String line : dialogue.split("\n")) {
+			g2.drawString(line, x, y);
+			y+=20;
+		}
+		
 	}
 	
 	public void drawSubWindow(int x, int y, int width, int height) {

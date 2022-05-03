@@ -16,8 +16,8 @@ public class DoorObject extends ParentObject {
 		objectName = "Door";
 
 		try {
-			objectSprite = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
-			uTool.scaleImg(objectSprite, gp.tileSize, gp.tileSize);
+			objectSprite1 = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
+			uTool.scaleImg(objectSprite1, gp.tileSize, gp.tileSize);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

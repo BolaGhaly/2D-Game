@@ -17,8 +17,8 @@ public class KeyObject extends ParentObject {
 		objectName = "Key";
 
 		try {
-			objectSprite = ImageIO.read(getClass().getResourceAsStream("/objects/batarang.png"));
-			uTool.scaleImg(objectSprite, gp.tileSize, gp.tileSize);
+			objectSprite1 = ImageIO.read(getClass().getResourceAsStream("/objects/batarang.png"));
+			uTool.scaleImg(objectSprite1, gp.tileSize, gp.tileSize);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
