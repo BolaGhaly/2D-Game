@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int dialogueState=3;
 	
 	
-	int FPS = 60;
+	public int FPS = 60;
 
 	TileManager tileM = new TileManager(this);
 	public PlayerControls playerKey = new PlayerControls(this);
@@ -57,9 +57,9 @@ public class GamePanel extends JPanel implements Runnable {
 	public UI ui = new UI(this);
 	public Event event = new Event(this);
 
-	int playerXCoord = 100;
-	int playerYCoord = 100;
-	int playerSpeed = 4;
+	public int playerXCoord = 100;
+	public int playerYCoord = 100;
+	public int playerSpeed = 4;
 
 	
 	//Entity Arrays
@@ -67,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Entity objects[] = new Entity[10];
 	public Entity npc[] = new Entity[10];
 	public Entity enemies[] = new Entity[20];
-	ArrayList <Entity> entityList = new ArrayList<>();
+	private ArrayList <Entity> entityList = new ArrayList<>();
 	
 	
 	
