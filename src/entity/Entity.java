@@ -179,8 +179,13 @@ public class Entity {
 		
 		//Enemy health bar
 		if(entityType == "enemy") {
+			
+			double oneHealth = (double)gp.tileSize/maxHealth;
+			double healthBarValue = oneHealth * currentHealth;
+			
 			g2.setColor(Color.RED);
-			g2.fillRect(screenX, screenY-15, gp.tileSize, 10);
+			g2.fillRect(screenX, screenY-15, (int)healthBarValue, 10);
+			
 		}
 		
 		if(invincible ==true) {
