@@ -39,11 +39,15 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int worldHeight = tileSize * maxWorldRow;
 	
 
-	//Game State
+	//Game States
 	public int gameState;
 	public final int playState=1;
 	public final int pauseState=2;
 	public final int dialogueState=3;
+	public final int gameOverState=4;
+	public final int victoryState = 5;
+	
+	public boolean enemiesEmpty = false;
 	
 	
 	public int FPS = 60;
@@ -182,6 +186,22 @@ public class GamePanel extends JPanel implements Runnable {
 		if(gameState==pauseState) {
 			//nothing
 		}
+		
+		for(int i=0; i<enemies.length; i++) {
+			
+			if(enemies[i]!=null) {
+				
+				enemiesEmpty = false;
+				break;
+			}
+			else enemiesEmpty=true;
+		}
+		
+		if(enemiesEmpty==true) {
+			gameState=victoryState;
+		}
+				
+			
 	}
 
 	//draws all elements of the game

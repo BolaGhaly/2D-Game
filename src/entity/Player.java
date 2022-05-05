@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -36,6 +37,9 @@ public class Player extends Entity {
 
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
+		
+		attackRadius.width= 36;
+		attackRadius.height = 36; 
 
 		setDefaultValues();
 		getPlayerImage();
@@ -235,6 +239,11 @@ public class Player extends Entity {
 				invincibleCounter=0;
 			}
 		}
+		
+		if(currentHealth<=0) {
+			gp.gameState=gp.gameOverState;
+		}
+		
 
 	}
 
@@ -289,6 +298,25 @@ public class Player extends Entity {
 		}
 	}
 	
+	public void damageEnemy(int i) {
+		
+		if(i!=999) {
+			
+			if(gp.enemies[i].invincible == false) {
+				
+				gp.enemies[i].currentHealth -= 1;
+				gp.enemies[i].invincible = true;
+				
+				if(gp.enemies[i].currentHealth <= 0) {
+					
+					gp.enemies[i] = null;
+										
+				}
+			}
+		}
+		
+	}
+	
 	public void attackAction() {
 		
 		spriteCounter++;
@@ -297,6 +325,40 @@ public class Player extends Entity {
 		}
 		if(spriteCounter >5 && spriteCounter <=25) {
 			spriteNum = 2;
+			
+			//Temp varibales so we can remember where player was
+			int tempWorldX = worldX;
+			int tempWorldY = worldY;
+			int tempSolidAreaWidth = solidArea.width;
+			int tempSolidAreaHeight = solidArea.height;
+			
+			
+			switch(direction) {
+			case "up":
+				worldY-= attackRadius.height;
+				break;
+			case "down":
+				worldY+= attackRadius.height;
+				break;
+			case "left":
+				worldX-= attackRadius.width;
+				break;
+			case "right":
+				worldX+= attackRadius.width;
+				break;
+			}
+			
+			solidArea.width = attackRadius.width;
+			solidArea.height = attackRadius.height;
+			
+			int enemyIndex = gp.collisionChecker.checkEntity(this, gp.enemies);
+			damageEnemy(enemyIndex);
+			
+			worldX = tempWorldX;
+			worldY = tempWorldY;
+			solidArea.width = tempSolidAreaWidth;
+			solidArea.height = tempSolidAreaHeight;
+			
 		}
 		if(spriteCounter > 25) {
 			spriteNum = 1;
