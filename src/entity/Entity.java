@@ -181,6 +181,7 @@ public class Entity {
 		}
 		
 		g2.drawImage(entitySprite, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		}
 	}
 	

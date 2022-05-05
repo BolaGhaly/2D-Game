@@ -17,16 +17,6 @@ public class CharacterSelect extends Frame implements ActionListener {
 	public static GamePanel gamePanel;
 
 	CharacterSelect() {
-		//ImageIcon batman = new ImageIcon("/player/batman/batman_down_1.png"); // load the image to a imageIcon
-		//Image image = batman.getImage(); // transform it 
-		//Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-		//batman = new ImageIcon(newimg);  // transform it back
-		//Icon batman= new ImageIcon("/player/batman/batman_down_1.png");
-		//    	GamePanel gp = new GamePanel(""); 
-		//    	gamePanel=gp;
-
-		//        l=new JLabel("Batman");  
-		//        l.setBounds(50,100, 250,20);      
 
 		try {
 			batman = ImageIO.read(getClass().getResourceAsStream("/player/batman/batman_character_select_128.png"));

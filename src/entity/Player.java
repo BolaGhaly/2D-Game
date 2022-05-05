@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -238,6 +239,11 @@ public class Player extends Entity {
 				invincibleCounter=0;
 			}
 		}
+		
+		if(currentHealth<=0) {
+			gp.gameState=gp.gameOverState;
+		}
+		
 
 	}
 
@@ -302,12 +308,11 @@ public class Player extends Entity {
 				gp.enemies[i].invincible = true;
 				
 				if(gp.enemies[i].currentHealth <= 0) {
+					
 					gp.enemies[i] = null;
+										
 				}
 			}
-		}
-		else {
-			System.out.print("MISS");
 		}
 		
 	}

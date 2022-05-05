@@ -72,6 +72,16 @@ public class UI {
 			drawDialogueScreen();
 			drawPlayerLife();
 		}
+		
+		//game over state
+		if(gPanel.gameState==gPanel.gameOverState) {
+			drawGameOverScreen();
+		}
+		
+		//victory state
+		if(gPanel.gameState==gPanel.victoryState) {
+			drawVictoryScreen();
+		}
 
 	}
 	
@@ -133,6 +143,38 @@ public class UI {
 			y+=20;
 		}
 		
+	}
+	
+	public void drawGameOverScreen() {
+		
+		g2.setColor(new Color(0, 0, 0, 150));
+		g2.fillRect(0, 0, gPanel.screenWidth, gPanel.screenHeight);
+		
+		int x, y;
+		String line= "Game Over!";
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,100F));
+		g2.setColor(Color.black);
+		x = getHorizontalCenter(line);
+		y = gPanel.tileSize*4;
+		g2.drawString(line, x, y);
+		g2.setColor(Color.white);
+		g2.drawString(line, x-4, y-4);
+	}
+	
+public void drawVictoryScreen() {
+		
+		g2.setColor(new Color(0, 0, 0, 150));
+		g2.fillRect(0, 0, gPanel.screenWidth, gPanel.screenHeight);
+		
+		int x, y;
+		String line= "Victory!";
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,100F));
+		g2.setColor(Color.black);
+		x = getHorizontalCenter(line);
+		y = gPanel.tileSize*4;
+		g2.drawString(line, x, y);
+		g2.setColor(Color.white);
+		g2.drawString(line, x-4, y-4);
 	}
 	
 	public void drawSubWindow(int x, int y, int width, int height) {
