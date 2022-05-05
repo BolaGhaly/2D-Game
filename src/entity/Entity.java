@@ -31,6 +31,7 @@ public class Entity {
 	public int invincibleCounter=0;
 	public String entityType;
 	public boolean attacking =false;
+	public Rectangle attackRadius = new Rectangle(0, 0, 0 ,0);
 	
 	//character stats
 	public int maxHealth;
