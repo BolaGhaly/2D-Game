@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -174,6 +175,12 @@ public class Entity {
 				entitySprite = right2;
 			}
 			break;
+		}
+		
+		//Enemy health bar
+		if(entityType == "enemy") {
+			g2.setColor(Color.RED);
+			g2.fillRect(screenX, screenY-15, gp.tileSize, 10);
 		}
 		
 		if(invincible ==true) {
