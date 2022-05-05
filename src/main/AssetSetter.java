@@ -57,11 +57,16 @@ public class AssetSetter {
 	}
 	
 	public void setEnemies() {
-//		gp.enemies[0] = new EnemyTwoFace(gp);
-//		gp.enemies[0].worldX=11*gp.tileSize;
-//		gp.enemies[0].worldY=10*gp.tileSize;	
 		gp.enemies[0] = new EnemyTwoFace(gp);
 		gp.enemies[0].worldX=23*gp.tileSize;
 		gp.enemies[0].worldY=37*gp.tileSize;	
+		
+		gp.enemies[1] = new EnemyTwoFace(gp);
+		gp.enemies[1].worldX=24*gp.tileSize;
+		gp.enemies[1].worldY=37*gp.tileSize;	
+		
+		gp.enemies[2] = new EnemyTwoFace(gp);
+		gp.enemies[2].worldX=25*gp.tileSize;
+		gp.enemies[2].worldY=37*gp.tileSize;
 	}
 }
