@@ -64,8 +64,9 @@ public class MaleBlueBardNPC extends Entity{
 	}
 	
 	public void setDialogue() {
-		 
+		
 		dialogues[0] = "Whats up gang?";
+		
 	}
 	
 	public void speak() {

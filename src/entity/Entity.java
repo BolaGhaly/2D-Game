@@ -15,7 +15,7 @@ public class Entity {
 	GamePanel gp;
 	public int worldX, worldY;
 	public double speed;
-	public BufferedImage spriteSheet, up1, up2, down1, down2, left1, left2, right1, right2;
+	public BufferedImage spriteSheet, up1, up2, down1, down2, left1, left2, right1, right2, attackUp1, attackDown1, attackLeft1, attackRight1;
 	public String direction="down"; 
 	public int spriteCounter = 0;
 	public int spriteNum = 1;
@@ -30,6 +30,7 @@ public class Entity {
 	public Boolean invincible=false;
 	public int invincibleCounter=0;
 	public String entityType;
+	public boolean attacking =false;
 	
 	//character stats
 	public int maxHealth;

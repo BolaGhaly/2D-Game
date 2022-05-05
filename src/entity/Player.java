@@ -70,6 +70,11 @@ public class Player extends Entity {
 				left2 = this.getSprite(3, 2, 48, 48);
 				right1 = this.getSprite(1, 3, 48, 48);
 				right2 = this.getSprite(3, 3, 48, 48);
+				attackUp1  = this.getSprite(7, 9, 48, 48);
+				attackDown1 = this.getSprite(4, 9, 48, 48);
+				attackRight1 = this.getSprite(6, 9, 48, 48);
+				attackLeft1 = this.getSprite(5, 9, 48, 48);
+
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -136,7 +141,13 @@ public class Player extends Entity {
 
 	public void update() {
 
-		if (playerKey.moveDown == true || playerKey.moveUp == true || playerKey.moveRight == true
+		if(attacking == true) {
+			
+			attackAction();
+			
+		}
+		
+		else if (playerKey.moveDown == true || playerKey.moveUp == true || playerKey.moveRight == true
 				|| playerKey.moveLeft == true || playerKey.startDialogue==true) {
 
 			if (playerKey.moveUp == true) {
@@ -277,18 +288,37 @@ public class Player extends Entity {
 			
 		}
 	}
+	
+	public void attackAction() {
+		
+		spriteCounter++;
+		if(spriteCounter<=5) {
+			spriteNum = 1;
+		}
+		if(spriteCounter >5 && spriteCounter <=25) {
+			spriteNum = 2;
+		}
+		if(spriteCounter > 25) {
+			spriteNum = 1;
+			spriteCounter = 0;
+			attacking = false;
+		}
+		}
 
 	public void interactNPC(int i) {
-		if(i!=999) {
-			
-			if(gp.playerKey.startDialogue==true) {
+		if(gp.playerKey.startDialogue==true) {
+			if(i!=999) {
+					
+					gp.gameState = gp.dialogueState;
+					gp.npc[i].speak();			
 				
-				gp.gameState = gp.dialogueState;
-				gp.npc[i].speak();
-				
+			}
+			else {
+				attacking = true;
 			}
 			
 		}
+		
 		
 		gp.playerKey.startDialogue=false;
 	}
@@ -305,35 +335,75 @@ public class Player extends Entity {
 
 		switch (direction) {
 		case "up":
-			if (spriteNum == 1) {
-				playerSprite = up1;
+			if(attacking==false) {
+				if (spriteNum == 1) {
+					playerSprite = up1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = up2;
+				}
 			}
-			if (spriteNum == 2) {
-				playerSprite = up2;
+			if(attacking==true) {
+				if (spriteNum == 1) {
+					playerSprite = up1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = attackUp1;
+				}
 			}
 			break;
 		case "down":
-			if (spriteNum == 1) {
-				playerSprite = down1;
+			if(attacking==false) {
+				if (spriteNum == 1) {
+					playerSprite = down1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = down2;
+				}
 			}
-			if (spriteNum == 2) {
-				playerSprite = down2;
+			if(attacking==true) {
+				if (spriteNum == 1) {
+					playerSprite = down1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = attackDown1;
+				}
 			}
 			break;
 		case "left":
-			if (spriteNum == 1) {
-				playerSprite = left1;
+			if(attacking==false) {
+				if (spriteNum == 1) {
+					playerSprite = left1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = left2;
+				}
 			}
-			if (spriteNum == 2) {
-				playerSprite = left2;
+			if(attacking==true) {
+				if (spriteNum == 1) {
+					playerSprite = left1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = attackLeft1;
+				}
 			}
 			break;
 		case "right":
-			if (spriteNum == 1) {
-				playerSprite = right1;
+			if(attacking==false) {
+				if (spriteNum == 1) {
+					playerSprite = right1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = right2;
+				}
 			}
-			if (spriteNum == 2) {
-				playerSprite = right2;
+			if(attacking==true) {
+				if (spriteNum == 1) {
+					playerSprite = right1;
+				}
+				if (spriteNum == 2) {
+					playerSprite = attackRight1;
+				}
 			}
 			break;
 		}
