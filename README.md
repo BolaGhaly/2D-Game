@@ -12,3 +12,4 @@
    * You can follow [this](https://www.vogella.com/tutorials/Eclipse/article.html) helpful tutorial which explains how to use the Eclipse IDE for Java development.
 3. Clone this repository to your local machine using `git clone git@github.com:BolaGhaly/2D-Game.git`.
 4. Open Eclipse and import the project by going to `File > Import > General > Existing Projects into Workspace`.
+5. Pick the `Select root directory` option and browse and select this repository's folder from your local machine, and then click on `Finish`.
