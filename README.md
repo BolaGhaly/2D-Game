@@ -22,4 +22,5 @@
 - Dialogue with NPC:
 <img src="https://user-images.githubusercontent.com/59656591/209459174-e02c0347-1e88-4519-9bd2-b3bd9cf09daa.gif" />
 
-
+- Pausing and unpausing the game:
+<img src="https://user-images.githubusercontent.com/59656591/209484610-7c9fd839-d50f-4e04-9e54-e45d35b6a965.gif" />
