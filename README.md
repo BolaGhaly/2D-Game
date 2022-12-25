@@ -1,4 +1,4 @@
-# Java 2D Game
+# Java 2D RPG Game
 
 #### A fun and interactive 2D game built with Java and Eclipse IDE.
 
@@ -13,3 +13,4 @@
 3. Clone this repository to your local machine using `git clone git@github.com:BolaGhaly/2D-Game.git`.
 4. Open Eclipse and import the project by going to `File > Import > General > Existing Projects into Workspace`.
 5. Pick the `Select root directory` option and browse and select this repository's folder from your local machine, and then click on `Finish`.
+6. Run the game by right-clicking on the project (`2DRpg [2D-Game main]`) and selecting `Run As > Java Application`. Enjoy! 😄
