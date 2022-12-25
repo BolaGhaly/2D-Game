@@ -265,18 +265,6 @@ public class GamePanel extends JPanel implements Runnable {
 		// UI
 		ui.draw(g2);
 
-
-		
-		
-		// DEBUG
-		if (playerKey.checkDebugTime == true) {
-			long drawEnd = System.nanoTime();
-			long passed = drawEnd - drawStart;
-			System.out.println("Draw Time: " + passed);
-		}
-		
-
-
 		g2.dispose();
 	}
 
