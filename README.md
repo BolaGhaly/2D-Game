@@ -6,10 +6,12 @@
 <kbd> <a href="https://www.java.com/"> <img src="https://img.shields.io/badge/Java-E76F00?style=for-the-badge&logo=java&logoColor=white" /> </a> </kbd>
 <kbd> <a href="https://www.eclipse.org/ide/"> <img src="https://img.shields.io/badge/Eclipse-4800C4?style=for-the-badge&logo=eclipse&logoColor=white" /> </a> </kbd>
 
-## Screenshots and GIFs
+## GIFs
 - Selecting a character:
-<img src="https://user-images.githubusercontent.com/59656591/209458853-468bca01-cd51-4709-aeb9-0ed48d1698f4.gif"/>
+<img src="https://user-images.githubusercontent.com/59656591/209458853-468bca01-cd51-4709-aeb9-0ed48d1698f4.gif" />
 
+- Dialogue with NPC:
+<img src="https://user-images.githubusercontent.com/59656591/209459174-e02c0347-1e88-4519-9bd2-b3bd9cf09daa.gif" />
 
 ## Instructions
 1. Download and install the latest version of Java from the [official website](https://www.java.com/en/download/).
