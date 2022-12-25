@@ -10,3 +10,4 @@
 1. Download and install the latest version of Java from the [official website](https://www.java.com/en/download/).
 2. Download and install Eclipse from the [official website](https://www.eclipse.org/downloads/).
    * You can follow [this](https://www.vogella.com/tutorials/Eclipse/article.html) helpful tutorial which explains how to use the Eclipse IDE for Java development.
+3. Clone this repository to your local machine using `git clone git@github.com:BolaGhaly/2D-Game.git`.
