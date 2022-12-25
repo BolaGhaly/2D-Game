@@ -6,6 +6,11 @@
 <kbd> <a href="https://www.java.com/"> <img src="https://img.shields.io/badge/Java-E76F00?style=for-the-badge&logo=java&logoColor=white" /> </a> </kbd>
 <kbd> <a href="https://www.eclipse.org/ide/"> <img src="https://img.shields.io/badge/Eclipse-4800C4?style=for-the-badge&logo=eclipse&logoColor=white" /> </a> </kbd>
 
+## Screenshots and GIFs
+- Selecting a character:
+<img src="https://user-images.githubusercontent.com/59656591/209458853-468bca01-cd51-4709-aeb9-0ed48d1698f4.gif"/>
+
+
 ## Instructions
 1. Download and install the latest version of Java from the [official website](https://www.java.com/en/download/).
 2. Download and install Eclipse from the [official website](https://www.eclipse.org/downloads/).
