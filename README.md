@@ -25,5 +25,8 @@
 - Pausing and unpausing the game:
 <img src="https://user-images.githubusercontent.com/59656591/209484610-7c9fd839-d50f-4e04-9e54-e45d35b6a965.gif" />
 
-- Attacked to death by enemy NPCs + "Game Over" Screen:
+- Attacked to death by enemy NPCs + "Game Over!" Screen:
 <img src="https://user-images.githubusercontent.com/59656591/209485461-d742c9b1-c9e5-43f1-8ee0-64f200658c6e.gif" />
+
+- Killing all enemy NPCs + "Victory!" Screen:
+<img src="https://user-images.githubusercontent.com/59656591/209485691-aba71026-b920-4884-b98c-f4e7cb170c57.gif" />
