@@ -30,3 +30,5 @@
 
 - Killing all enemy NPCs + "Victory!" Screen:
 <img src="https://user-images.githubusercontent.com/59656591/209485691-aba71026-b920-4884-b98c-f4e7cb170c57.gif" />
+
+GIFs were created with [LICEcap](https://www.cockos.com/licecap/).
